@@ -17,7 +17,7 @@ Then add to [`.flowconfig`](https://flowtype.org/docs/advanced-configuration.htm
 
 ```
 [libs]
-node_modules/aws-sdk-flow-decls
+node_modules/aws-sdk-flow-decls/*.js
 ```
 
 ## Notes
