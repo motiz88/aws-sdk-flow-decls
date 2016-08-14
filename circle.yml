@@ -1,0 +1,22 @@
+machine:
+  node:
+    version: 6
+  environment:
+    MOCHA_FILE: $CIRCLE_TEST_REPORTS/test-results.xml
+    ESLINT_FILE: $CIRCLE_TEST_REPORTS/eslint-results.xml
+dependencies:
+  pre:
+    - npm install -g npm@3
+test:
+  post:
+    - cp test/artifacts/* $CIRCLE_ARTIFACTS/
+deployment:
+  prod:
+    branch: master
+    commands:
+      - git show-ref --head --heads | while IFS=' ' read -r hash name; do test ! -e "${GIT_DIR:-.git}/$name" && echo $hash > "${GIT_DIR:-.git}/$name"; done
+      - npm run semantic-release
+checkout:
+  post:
+    - git submodule sync --recursive
+    - git submodule update --recursive --init
