@@ -87,7 +87,6 @@ declare module 'aws-sdk' {
 
   declare type $APIMethod<Params, Result> = (params: Params, cb?: $Callback<Result>) => Request<Result>;
 
-
   declare type ACM$20151208$AddTagsToCertificateRequest = {
     CertificateArn: string;
     Tags: ACM$20151208$TagList;
@@ -38012,6 +38011,4 @@ declare module 'aws-sdk' {
     }): WorkSpaces$20150408;
     constructor(): WorkSpaces$20150408;
   }
-
 }
-
