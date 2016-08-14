@@ -11,7 +11,7 @@
     "eslint:xunit-to-file": "envcheck ESLINT_FILE && compat \"npm run eslint -- --quiet -f junit --output-file $ESLINT_FILE\"",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "npm run test:ci",
-    "test:ci": "run-s --continue-on-error test:xunit eslint:xunit-to-file",
+    "test:ci": "run-s test:xunit eslint:xunit-to-file",
     "test:local": "run-s test:fast eslint",
     "test:fast": "cross-env NODE_ENV=test mocha",
     "test:xunit": "cross-env NODE_ENV=test mocha  --reporter mocha-junit-reporter"
