@@ -12,7 +12,7 @@ describe('AWS SDK type declarations', function () {
   const artifactsDir = path.resolve(__dirname, '..', 'artifacts');
   before(async () => {
     declFile = path.resolve(__dirname, '..', '..', 'aws-sdk.decls.js');
-    decls = await fs.readFile(declFile, decls, 'utf8');
+    decls = await fs.readFile(declFile, decls);
     try {
       await fs.mkdirp(artifactsDir);
     } catch (e) {
@@ -20,7 +20,7 @@ describe('AWS SDK type declarations', function () {
     }
   });
   it('should parse with no errors', () => {
-    const generatedAst = parseFlow(decls);
+    const generatedAst = parseFlow(decls.toString('utf8'));
     if (generatedAst.errors && generatedAst.errors.length) {
       fail({errors: generatedAst.errors}, {errors: []}, 'Generated code has parse errors');
     }
