@@ -24,7 +24,7 @@ node_modules/aws-sdk-flow-decls
 
 This is an early release. Use with caution. There will be changes (to be communicated via semver).
 
-Built with [aws-sdk-flow-decls-gen](https://github.com/motiz88/aws-sdk-flow-decls-gen).
+Built with [aws-sdk-flow-decl-gen](https://github.com/motiz88/aws-sdk-flow-decl-gen).
 
 [circle-image]: https://img.shields.io/circleci/project/motiz88/aws-sdk-flow-decls.svg?style=flat-square
 [circle-url]: https://circleci.com/gh/motiz88/aws-sdk-flow-decls
