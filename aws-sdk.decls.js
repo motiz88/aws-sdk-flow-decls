@@ -58,7 +58,45 @@ declare module 'aws-sdk' {
   }
 
   declare class Config {
-    logger?: void | {write: Function} | {log: Function}
+    logger?: void | {write: Function} | {log: Function};
+    accessKeyId?: string;
+    secretAccessKey?: string;
+    sessionToken?: Credentials;
+    credentials?: Credentials;
+    credentialProvider?: CredentialProviderChain;
+    region?: string;
+    maxRetries?: number;
+    maxRedirects?: number;
+    sslEnabled?: boolean;
+    paramValidation?: boolean | {
+      min?: boolean,
+      max?: boolean,
+      pattern?: boolean,
+      enum?: boolean
+    };
+    computeChecksums?: boolean;
+    convertResponseTypes?: boolean;
+    correctClockSkew?: boolean;
+    s3ForcePathStyle?: boolean;
+    s3BucketEndpoint?: boolean;
+    s3DisableBodySigning?: boolean;
+    retryDelayOptions?: {
+      base?: number,
+      customBackoff?: (retryCount: number) => number
+    };
+    httpOptions?: {
+      proxy?: string,
+      agent?: httpAgent,
+      timeout?: number,
+      xhrAsync?: boolean,
+      xhrWithCredentials?: boolean
+    };
+    apiVersion?: string | Date;
+    apiVersions?: {[key: string]: string | Date};
+    logger?: void | {write: Function} | {log: Function};
+    systemClockOffset?: number;
+    signatureVersion?: string;
+    signatureCache?: boolean;
   }
 
   declare var config: Config;
@@ -34771,7 +34809,7 @@ declare module 'aws-sdk' {
     domain: string;
     taskList: SWF$20120125$TaskList;
   };
-  declare type SWF$20120125$Decision = {} & ({
+  declare type SWF$20120125$Decision = {
     decisionType: 'ScheduleActivityTask';
     scheduleActivityTaskDecisionAttributes: SWF$20120125$ScheduleActivityTaskDecisionAttributes;
   } | {
@@ -34810,7 +34848,7 @@ declare module 'aws-sdk' {
   } | {
     decisionType: 'ScheduleLambdaFunction';
     scheduleLambdaFunctionDecisionAttributes: SWF$20120125$ScheduleLambdaFunctionDecisionAttributes;
-  });
+  };
   declare type SWF$20120125$DecisionList = SWF$20120125$Decision[];
   declare type SWF$20120125$DecisionTask = {
     taskToken: string;
@@ -34931,169 +34969,274 @@ declare module 'aws-sdk' {
   declare type SWF$20120125$HistoryEvent = {
     eventTimestamp: Date;
     eventId: number;
-  } & ({
     eventType: 'WorkflowExecutionStarted';
     workflowExecutionStartedEventAttributes: SWF$20120125$WorkflowExecutionStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionCancelRequested';
     workflowExecutionCancelRequestedEventAttributes: SWF$20120125$WorkflowExecutionCancelRequestedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionCompleted';
     workflowExecutionCompletedEventAttributes: SWF$20120125$WorkflowExecutionCompletedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'CompleteWorkflowExecutionFailed';
     completeWorkflowExecutionFailedEventAttributes: SWF$20120125$CompleteWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionFailed';
     workflowExecutionFailedEventAttributes: SWF$20120125$WorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'FailWorkflowExecutionFailed';
     failWorkflowExecutionFailedEventAttributes: SWF$20120125$FailWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionTimedOut';
     workflowExecutionTimedOutEventAttributes: SWF$20120125$WorkflowExecutionTimedOutEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionCanceled';
     workflowExecutionCanceledEventAttributes: SWF$20120125$WorkflowExecutionCanceledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'CancelWorkflowExecutionFailed';
     cancelWorkflowExecutionFailedEventAttributes: SWF$20120125$CancelWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionContinuedAsNew';
     workflowExecutionContinuedAsNewEventAttributes: SWF$20120125$WorkflowExecutionContinuedAsNewEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ContinueAsNewWorkflowExecutionFailed';
     continueAsNewWorkflowExecutionFailedEventAttributes: SWF$20120125$ContinueAsNewWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionTerminated';
     workflowExecutionTerminatedEventAttributes: SWF$20120125$WorkflowExecutionTerminatedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'DecisionTaskScheduled';
     decisionTaskScheduledEventAttributes: SWF$20120125$DecisionTaskScheduledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'DecisionTaskStarted';
     decisionTaskStartedEventAttributes: SWF$20120125$DecisionTaskStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'DecisionTaskCompleted';
     decisionTaskCompletedEventAttributes: SWF$20120125$DecisionTaskCompletedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'DecisionTaskTimedOut';
     decisionTaskTimedOutEventAttributes: SWF$20120125$DecisionTaskTimedOutEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskScheduled';
     activityTaskScheduledEventAttributes: SWF$20120125$ActivityTaskScheduledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ScheduleActivityTaskFailed';
     scheduleActivityTaskFailedEventAttributes: SWF$20120125$ScheduleActivityTaskFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskStarted';
     activityTaskStartedEventAttributes: SWF$20120125$ActivityTaskStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskCompleted';
     activityTaskCompletedEventAttributes: SWF$20120125$ActivityTaskCompletedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskFailed';
     activityTaskFailedEventAttributes: SWF$20120125$ActivityTaskFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskTimedOut';
     activityTaskTimedOutEventAttributes: SWF$20120125$ActivityTaskTimedOutEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskCanceled';
     activityTaskCanceledEventAttributes: SWF$20120125$ActivityTaskCanceledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ActivityTaskCancelRequested';
     activityTaskCancelRequestedEventAttributes: SWF$20120125$ActivityTaskCancelRequestedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'RequestCancelActivityTaskFailed';
     requestCancelActivityTaskFailedEventAttributes: SWF$20120125$RequestCancelActivityTaskFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'WorkflowExecutionSignaled';
     workflowExecutionSignaledEventAttributes: SWF$20120125$WorkflowExecutionSignaledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'MarkerRecorded';
     markerRecordedEventAttributes: SWF$20120125$MarkerRecordedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'RecordMarkerFailed';
     recordMarkerFailedEventAttributes: SWF$20120125$RecordMarkerFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'TimerStarted';
     timerStartedEventAttributes: SWF$20120125$TimerStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'StartTimerFailed';
     startTimerFailedEventAttributes: SWF$20120125$StartTimerFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'TimerFired';
     timerFiredEventAttributes: SWF$20120125$TimerFiredEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'TimerCanceled';
     timerCanceledEventAttributes: SWF$20120125$TimerCanceledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'CancelTimerFailed';
     cancelTimerFailedEventAttributes: SWF$20120125$CancelTimerFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'StartChildWorkflowExecutionInitiated';
     startChildWorkflowExecutionInitiatedEventAttributes: SWF$20120125$StartChildWorkflowExecutionInitiatedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'StartChildWorkflowExecutionFailed';
     startChildWorkflowExecutionFailedEventAttributes: SWF$20120125$StartChildWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionStarted';
     childWorkflowExecutionStartedEventAttributes: SWF$20120125$ChildWorkflowExecutionStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionCompleted';
     childWorkflowExecutionCompletedEventAttributes: SWF$20120125$ChildWorkflowExecutionCompletedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionFailed';
     childWorkflowExecutionFailedEventAttributes: SWF$20120125$ChildWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionTimedOut';
     childWorkflowExecutionTimedOutEventAttributes: SWF$20120125$ChildWorkflowExecutionTimedOutEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionCanceled';
     childWorkflowExecutionCanceledEventAttributes: SWF$20120125$ChildWorkflowExecutionCanceledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ChildWorkflowExecutionTerminated';
     childWorkflowExecutionTerminatedEventAttributes: SWF$20120125$ChildWorkflowExecutionTerminatedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'SignalExternalWorkflowExecutionInitiated';
     signalExternalWorkflowExecutionInitiatedEventAttributes: SWF$20120125$SignalExternalWorkflowExecutionInitiatedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'SignalExternalWorkflowExecutionFailed';
     signalExternalWorkflowExecutionFailedEventAttributes: SWF$20120125$SignalExternalWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ExternalWorkflowExecutionSignaled';
     externalWorkflowExecutionSignaledEventAttributes: SWF$20120125$ExternalWorkflowExecutionSignaledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'RequestCancelExternalWorkflowExecutionInitiated';
     requestCancelExternalWorkflowExecutionInitiatedEventAttributes: SWF$20120125$RequestCancelExternalWorkflowExecutionInitiatedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'RequestCancelExternalWorkflowExecutionFailed';
     requestCancelExternalWorkflowExecutionFailedEventAttributes: SWF$20120125$RequestCancelExternalWorkflowExecutionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ExternalWorkflowExecutionCancelRequested';
     externalWorkflowExecutionCancelRequestedEventAttributes: SWF$20120125$ExternalWorkflowExecutionCancelRequestedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'LambdaFunctionScheduled';
     lambdaFunctionScheduledEventAttributes: SWF$20120125$LambdaFunctionScheduledEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'LambdaFunctionStarted';
     lambdaFunctionStartedEventAttributes: SWF$20120125$LambdaFunctionStartedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'LambdaFunctionCompleted';
     lambdaFunctionCompletedEventAttributes: SWF$20120125$LambdaFunctionCompletedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'LambdaFunctionFailed';
     lambdaFunctionFailedEventAttributes: SWF$20120125$LambdaFunctionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'LambdaFunctionTimedOut';
     lambdaFunctionTimedOutEventAttributes: SWF$20120125$LambdaFunctionTimedOutEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'ScheduleLambdaFunctionFailed';
     scheduleLambdaFunctionFailedEventAttributes: SWF$20120125$ScheduleLambdaFunctionFailedEventAttributes;
   } | {
+    eventTimestamp: Date;
+    eventId: number;
     eventType: 'StartLambdaFunctionFailed';
     startLambdaFunctionFailedEventAttributes: SWF$20120125$StartLambdaFunctionFailedEventAttributes;
-  });
+  };
   declare type SWF$20120125$HistoryEventList = SWF$20120125$HistoryEvent[];
   declare type SWF$20120125$LambdaFunctionCompletedEventAttributes = {
     scheduledEventId: number;
