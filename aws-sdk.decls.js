@@ -1175,10 +1175,15 @@ declare module 'aws-sdk' {
     InstanceIds?: AutoScaling$20110101$InstanceIds;
     AutoScalingGroupName: string;
   };
+  declare type AutoScaling$20110101$AttachLoadBalancerTargetGroupsResultType = {};
+  declare type AutoScaling$20110101$AttachLoadBalancerTargetGroupsType = {
+    AutoScalingGroupName: string;
+    TargetGroupARNs: AutoScaling$20110101$TargetGroupARNs;
+  };
   declare type AutoScaling$20110101$AttachLoadBalancersResultType = {};
   declare type AutoScaling$20110101$AttachLoadBalancersType = {
-    AutoScalingGroupName?: string;
-    LoadBalancerNames?: AutoScaling$20110101$LoadBalancerNames;
+    AutoScalingGroupName: string;
+    LoadBalancerNames: AutoScaling$20110101$LoadBalancerNames;
   };
   declare type AutoScaling$20110101$AutoScalingGroup = {
     AutoScalingGroupName: string;
@@ -1190,6 +1195,7 @@ declare module 'aws-sdk' {
     DefaultCooldown: number;
     AvailabilityZones: AutoScaling$20110101$AvailabilityZones;
     LoadBalancerNames?: AutoScaling$20110101$LoadBalancerNames;
+    TargetGroupARNs?: AutoScaling$20110101$TargetGroupARNs;
     HealthCheckType: string;
     HealthCheckGracePeriod?: number;
     Instances?: AutoScaling$20110101$Instances;
@@ -1256,6 +1262,7 @@ declare module 'aws-sdk' {
     DefaultCooldown?: number;
     AvailabilityZones?: AutoScaling$20110101$AvailabilityZones;
     LoadBalancerNames?: AutoScaling$20110101$LoadBalancerNames;
+    TargetGroupARNs?: AutoScaling$20110101$TargetGroupARNs;
     HealthCheckType?: string;
     HealthCheckGracePeriod?: number;
     PlacementGroup?: string;
@@ -1305,7 +1312,7 @@ declare module 'aws-sdk' {
     PolicyName: string;
   };
   declare type AutoScaling$20110101$DeleteScheduledActionType = {
-    AutoScalingGroupName?: string;
+    AutoScalingGroupName: string;
     ScheduledActionName: string;
   };
   declare type AutoScaling$20110101$DeleteTagsType = {
@@ -1337,6 +1344,15 @@ declare module 'aws-sdk' {
   declare type AutoScaling$20110101$DescribeLifecycleHooksType = {
     AutoScalingGroupName: string;
     LifecycleHookNames?: AutoScaling$20110101$LifecycleHookNames;
+  };
+  declare type AutoScaling$20110101$DescribeLoadBalancerTargetGroupsRequest = {
+    AutoScalingGroupName: string;
+    NextToken?: string;
+    MaxRecords?: number;
+  };
+  declare type AutoScaling$20110101$DescribeLoadBalancerTargetGroupsResponse = {
+    LoadBalancerTargetGroups?: AutoScaling$20110101$LoadBalancerTargetGroupStates;
+    NextToken?: string;
   };
   declare type AutoScaling$20110101$DescribeLoadBalancersRequest = {
     AutoScalingGroupName: string;
@@ -1397,10 +1413,15 @@ declare module 'aws-sdk' {
     AutoScalingGroupName: string;
     ShouldDecrementDesiredCapacity: boolean;
   };
+  declare type AutoScaling$20110101$DetachLoadBalancerTargetGroupsResultType = {};
+  declare type AutoScaling$20110101$DetachLoadBalancerTargetGroupsType = {
+    AutoScalingGroupName: string;
+    TargetGroupARNs: AutoScaling$20110101$TargetGroupARNs;
+  };
   declare type AutoScaling$20110101$DetachLoadBalancersResultType = {};
   declare type AutoScaling$20110101$DetachLoadBalancersType = {
-    AutoScalingGroupName?: string;
-    LoadBalancerNames?: AutoScaling$20110101$LoadBalancerNames;
+    AutoScalingGroupName: string;
+    LoadBalancerNames: AutoScaling$20110101$LoadBalancerNames;
   };
   declare type AutoScaling$20110101$DisableMetricsCollectionQuery = {
     AutoScalingGroupName: string;
@@ -1525,6 +1546,11 @@ declare module 'aws-sdk' {
     State?: string;
   };
   declare type AutoScaling$20110101$LoadBalancerStates = AutoScaling$20110101$LoadBalancerState[];
+  declare type AutoScaling$20110101$LoadBalancerTargetGroupState = {
+    LoadBalancerTargetGroupARN?: string;
+    State?: string;
+  };
+  declare type AutoScaling$20110101$LoadBalancerTargetGroupStates = AutoScaling$20110101$LoadBalancerTargetGroupState[];
   declare type AutoScaling$20110101$MetricCollectionType = {
     Metric?: string;
   };
@@ -1700,6 +1726,7 @@ declare module 'aws-sdk' {
     Tags?: AutoScaling$20110101$TagDescriptionList;
     NextToken?: string;
   };
+  declare type AutoScaling$20110101$TargetGroupARNs = string[];
   declare type AutoScaling$20110101$TerminateInstanceInAutoScalingGroupType = {
     InstanceId: string;
     ShouldDecrementDesiredCapacity: boolean;
@@ -2118,621 +2145,681 @@ declare module 'aws-sdk' {
     Capabilities?: CloudFormation$20100515$Capabilities;
     CapabilitiesReason?: string;
   };
-  declare type CloudFront$20160128$AccessDenied = {
+  declare type CloudFront$20160801$AccessDenied = {
     Message?: string;
   };
-  declare type CloudFront$20160128$ActiveTrustedSigners = {
+  declare type CloudFront$20160801$ActiveTrustedSigners = {
     Enabled: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$SignerList;
+    Items?: CloudFront$20160801$SignerList;
   };
-  declare type CloudFront$20160128$AliasList = string[];
-  declare type CloudFront$20160128$Aliases = {
+  declare type CloudFront$20160801$AliasList = string[];
+  declare type CloudFront$20160801$Aliases = {
     Quantity: number;
-    Items?: CloudFront$20160128$AliasList;
+    Items?: CloudFront$20160801$AliasList;
   };
-  declare type CloudFront$20160128$AllowedMethods = {
+  declare type CloudFront$20160801$AllowedMethods = {
     Quantity: number;
-    Items: CloudFront$20160128$MethodsList;
-    CachedMethods?: CloudFront$20160128$CachedMethods;
+    Items: CloudFront$20160801$MethodsList;
+    CachedMethods?: CloudFront$20160801$CachedMethods;
   };
-  declare type CloudFront$20160128$AwsAccountNumberList = string[];
-  declare type CloudFront$20160128$BatchTooLarge = {
+  declare type CloudFront$20160801$AwsAccountNumberList = string[];
+  declare type CloudFront$20160801$BatchTooLarge = {
     Message?: string;
   };
-  declare type CloudFront$20160128$CNAMEAlreadyExists = {
+  declare type CloudFront$20160801$CNAMEAlreadyExists = {
     Message?: string;
   };
-  declare type CloudFront$20160128$CacheBehavior = {
+  declare type CloudFront$20160801$CacheBehavior = {
     PathPattern: string;
     TargetOriginId: string;
-    ForwardedValues: CloudFront$20160128$ForwardedValues;
-    TrustedSigners: CloudFront$20160128$TrustedSigners;
+    ForwardedValues: CloudFront$20160801$ForwardedValues;
+    TrustedSigners: CloudFront$20160801$TrustedSigners;
     ViewerProtocolPolicy: 'allow-all' | 'https-only' | 'redirect-to-https';
     MinTTL: number;
-    AllowedMethods?: CloudFront$20160128$AllowedMethods;
+    AllowedMethods?: CloudFront$20160801$AllowedMethods;
     SmoothStreaming?: boolean;
     DefaultTTL?: number;
     MaxTTL?: number;
     Compress?: boolean;
   };
-  declare type CloudFront$20160128$CacheBehaviorList = CloudFront$20160128$CacheBehavior[];
-  declare type CloudFront$20160128$CacheBehaviors = {
+  declare type CloudFront$20160801$CacheBehaviorList = CloudFront$20160801$CacheBehavior[];
+  declare type CloudFront$20160801$CacheBehaviors = {
     Quantity: number;
-    Items?: CloudFront$20160128$CacheBehaviorList;
+    Items?: CloudFront$20160801$CacheBehaviorList;
   };
-  declare type CloudFront$20160128$CachedMethods = {
+  declare type CloudFront$20160801$CachedMethods = {
     Quantity: number;
-    Items: CloudFront$20160128$MethodsList;
+    Items: CloudFront$20160801$MethodsList;
   };
-  declare type CloudFront$20160128$CertificateSource = 'cloudfront' | 'iam' | 'acm';
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentity = {
+  declare type CloudFront$20160801$CertificateSource = 'cloudfront' | 'iam' | 'acm';
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentity = {
     Id: string;
     S3CanonicalUserId: string;
-    CloudFrontOriginAccessIdentityConfig?: CloudFront$20160128$CloudFrontOriginAccessIdentityConfig;
+    CloudFrontOriginAccessIdentityConfig?: CloudFront$20160801$CloudFrontOriginAccessIdentityConfig;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentityAlreadyExists = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentityAlreadyExists = {
     Message?: string;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentityConfig = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentityConfig = {
     CallerReference: string;
     Comment: string;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentityInUse = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentityInUse = {
     Message?: string;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentityList = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentityList = {
     Marker: string;
     NextMarker?: string;
     MaxItems: number;
     IsTruncated: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$CloudFrontOriginAccessIdentitySummaryList;
+    Items?: CloudFront$20160801$CloudFrontOriginAccessIdentitySummaryList;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentitySummary = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentitySummary = {
     Id: string;
     S3CanonicalUserId: string;
     Comment: string;
   };
-  declare type CloudFront$20160128$CloudFrontOriginAccessIdentitySummaryList = CloudFront$20160128$CloudFrontOriginAccessIdentitySummary[];
-  declare type CloudFront$20160128$CookieNameList = string[];
-  declare type CloudFront$20160128$CookieNames = {
+  declare type CloudFront$20160801$CloudFrontOriginAccessIdentitySummaryList = CloudFront$20160801$CloudFrontOriginAccessIdentitySummary[];
+  declare type CloudFront$20160801$CookieNameList = string[];
+  declare type CloudFront$20160801$CookieNames = {
     Quantity: number;
-    Items?: CloudFront$20160128$CookieNameList;
+    Items?: CloudFront$20160801$CookieNameList;
   };
-  declare type CloudFront$20160128$CookiePreference = {
+  declare type CloudFront$20160801$CookiePreference = {
     Forward: 'none' | 'whitelist' | 'all';
-    WhitelistedNames?: CloudFront$20160128$CookieNames;
+    WhitelistedNames?: CloudFront$20160801$CookieNames;
   };
-  declare type CloudFront$20160128$CreateCloudFrontOriginAccessIdentityRequest = {
-    CloudFrontOriginAccessIdentityConfig: CloudFront$20160128$CloudFrontOriginAccessIdentityConfig;
+  declare type CloudFront$20160801$CreateCloudFrontOriginAccessIdentityRequest = {
+    CloudFrontOriginAccessIdentityConfig: CloudFront$20160801$CloudFrontOriginAccessIdentityConfig;
   };
-  declare type CloudFront$20160128$CreateCloudFrontOriginAccessIdentityResult = {
-    CloudFrontOriginAccessIdentity?: CloudFront$20160128$CloudFrontOriginAccessIdentity;
+  declare type CloudFront$20160801$CreateCloudFrontOriginAccessIdentityResult = {
+    CloudFrontOriginAccessIdentity?: CloudFront$20160801$CloudFrontOriginAccessIdentity;
     Location?: string;
     ETag?: string;
   };
-  declare type CloudFront$20160128$CreateDistributionRequest = {
-    DistributionConfig: CloudFront$20160128$DistributionConfig;
+  declare type CloudFront$20160801$CreateDistributionRequest = {
+    DistributionConfig: CloudFront$20160801$DistributionConfig;
   };
-  declare type CloudFront$20160128$CreateDistributionResult = {
-    Distribution?: CloudFront$20160128$Distribution;
+  declare type CloudFront$20160801$CreateDistributionResult = {
+    Distribution?: CloudFront$20160801$Distribution;
     Location?: string;
     ETag?: string;
   };
-  declare type CloudFront$20160128$CreateInvalidationRequest = {
+  declare type CloudFront$20160801$CreateDistributionWithTagsRequest = {
+    DistributionConfigWithTags: CloudFront$20160801$DistributionConfigWithTags;
+  };
+  declare type CloudFront$20160801$CreateDistributionWithTagsResult = {
+    Distribution?: CloudFront$20160801$Distribution;
+    Location?: string;
+    ETag?: string;
+  };
+  declare type CloudFront$20160801$CreateInvalidationRequest = {
     DistributionId: string;
-    InvalidationBatch: CloudFront$20160128$InvalidationBatch;
+    InvalidationBatch: CloudFront$20160801$InvalidationBatch;
   };
-  declare type CloudFront$20160128$CreateInvalidationResult = {
+  declare type CloudFront$20160801$CreateInvalidationResult = {
     Location?: string;
-    Invalidation?: CloudFront$20160128$Invalidation;
+    Invalidation?: CloudFront$20160801$Invalidation;
   };
-  declare type CloudFront$20160128$CreateStreamingDistributionRequest = {
-    StreamingDistributionConfig: CloudFront$20160128$StreamingDistributionConfig;
+  declare type CloudFront$20160801$CreateStreamingDistributionRequest = {
+    StreamingDistributionConfig: CloudFront$20160801$StreamingDistributionConfig;
   };
-  declare type CloudFront$20160128$CreateStreamingDistributionResult = {
-    StreamingDistribution?: CloudFront$20160128$StreamingDistribution;
+  declare type CloudFront$20160801$CreateStreamingDistributionResult = {
+    StreamingDistribution?: CloudFront$20160801$StreamingDistribution;
     Location?: string;
     ETag?: string;
   };
-  declare type CloudFront$20160128$CustomErrorResponse = {
+  declare type CloudFront$20160801$CreateStreamingDistributionWithTagsRequest = {
+    StreamingDistributionConfigWithTags: CloudFront$20160801$StreamingDistributionConfigWithTags;
+  };
+  declare type CloudFront$20160801$CreateStreamingDistributionWithTagsResult = {
+    StreamingDistribution?: CloudFront$20160801$StreamingDistribution;
+    Location?: string;
+    ETag?: string;
+  };
+  declare type CloudFront$20160801$CustomErrorResponse = {
     ErrorCode: number;
     ResponsePagePath?: string;
     ResponseCode?: string;
     ErrorCachingMinTTL?: number;
   };
-  declare type CloudFront$20160128$CustomErrorResponseList = CloudFront$20160128$CustomErrorResponse[];
-  declare type CloudFront$20160128$CustomErrorResponses = {
+  declare type CloudFront$20160801$CustomErrorResponseList = CloudFront$20160801$CustomErrorResponse[];
+  declare type CloudFront$20160801$CustomErrorResponses = {
     Quantity: number;
-    Items?: CloudFront$20160128$CustomErrorResponseList;
+    Items?: CloudFront$20160801$CustomErrorResponseList;
   };
-  declare type CloudFront$20160128$CustomHeaders = {
+  declare type CloudFront$20160801$CustomHeaders = {
     Quantity: number;
-    Items?: CloudFront$20160128$OriginCustomHeadersList;
+    Items?: CloudFront$20160801$OriginCustomHeadersList;
   };
-  declare type CloudFront$20160128$CustomOriginConfig = {
+  declare type CloudFront$20160801$CustomOriginConfig = {
     HTTPPort: number;
     HTTPSPort: number;
     OriginProtocolPolicy: 'http-only' | 'match-viewer' | 'https-only';
-    OriginSslProtocols?: CloudFront$20160128$OriginSslProtocols;
+    OriginSslProtocols?: CloudFront$20160801$OriginSslProtocols;
   };
-  declare type CloudFront$20160128$DefaultCacheBehavior = {
+  declare type CloudFront$20160801$DefaultCacheBehavior = {
     TargetOriginId: string;
-    ForwardedValues: CloudFront$20160128$ForwardedValues;
-    TrustedSigners: CloudFront$20160128$TrustedSigners;
+    ForwardedValues: CloudFront$20160801$ForwardedValues;
+    TrustedSigners: CloudFront$20160801$TrustedSigners;
     ViewerProtocolPolicy: 'allow-all' | 'https-only' | 'redirect-to-https';
     MinTTL: number;
-    AllowedMethods?: CloudFront$20160128$AllowedMethods;
+    AllowedMethods?: CloudFront$20160801$AllowedMethods;
     SmoothStreaming?: boolean;
     DefaultTTL?: number;
     MaxTTL?: number;
     Compress?: boolean;
   };
-  declare type CloudFront$20160128$DeleteCloudFrontOriginAccessIdentityRequest = {
+  declare type CloudFront$20160801$DeleteCloudFrontOriginAccessIdentityRequest = {
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$DeleteDistributionRequest = {
+  declare type CloudFront$20160801$DeleteDistributionRequest = {
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$DeleteStreamingDistributionRequest = {
+  declare type CloudFront$20160801$DeleteStreamingDistributionRequest = {
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$Distribution = {
+  declare type CloudFront$20160801$Distribution = {
     Id: string;
+    ARN: string;
     Status: string;
     LastModifiedTime: Date;
     InProgressInvalidationBatches: number;
     DomainName: string;
-    ActiveTrustedSigners: CloudFront$20160128$ActiveTrustedSigners;
-    DistributionConfig: CloudFront$20160128$DistributionConfig;
+    ActiveTrustedSigners: CloudFront$20160801$ActiveTrustedSigners;
+    DistributionConfig: CloudFront$20160801$DistributionConfig;
   };
-  declare type CloudFront$20160128$DistributionAlreadyExists = {
+  declare type CloudFront$20160801$DistributionAlreadyExists = {
     Message?: string;
   };
-  declare type CloudFront$20160128$DistributionConfig = {
+  declare type CloudFront$20160801$DistributionConfig = {
     CallerReference: string;
-    Aliases?: CloudFront$20160128$Aliases;
+    Aliases?: CloudFront$20160801$Aliases;
     DefaultRootObject?: string;
-    Origins: CloudFront$20160128$Origins;
-    DefaultCacheBehavior: CloudFront$20160128$DefaultCacheBehavior;
-    CacheBehaviors?: CloudFront$20160128$CacheBehaviors;
-    CustomErrorResponses?: CloudFront$20160128$CustomErrorResponses;
+    Origins: CloudFront$20160801$Origins;
+    DefaultCacheBehavior: CloudFront$20160801$DefaultCacheBehavior;
+    CacheBehaviors?: CloudFront$20160801$CacheBehaviors;
+    CustomErrorResponses?: CloudFront$20160801$CustomErrorResponses;
     Comment: string;
-    Logging?: CloudFront$20160128$LoggingConfig;
+    Logging?: CloudFront$20160801$LoggingConfig;
     PriceClass?: 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
     Enabled: boolean;
-    ViewerCertificate?: CloudFront$20160128$ViewerCertificate;
-    Restrictions?: CloudFront$20160128$Restrictions;
+    ViewerCertificate?: CloudFront$20160801$ViewerCertificate;
+    Restrictions?: CloudFront$20160801$Restrictions;
     WebACLId?: string;
   };
-  declare type CloudFront$20160128$DistributionList = {
+  declare type CloudFront$20160801$DistributionConfigWithTags = {
+    DistributionConfig: CloudFront$20160801$DistributionConfig;
+    Tags: CloudFront$20160801$Tags;
+  };
+  declare type CloudFront$20160801$DistributionList = {
     Marker: string;
     NextMarker?: string;
     MaxItems: number;
     IsTruncated: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$DistributionSummaryList;
+    Items?: CloudFront$20160801$DistributionSummaryList;
   };
-  declare type CloudFront$20160128$DistributionNotDisabled = {
+  declare type CloudFront$20160801$DistributionNotDisabled = {
     Message?: string;
   };
-  declare type CloudFront$20160128$DistributionSummary = {
+  declare type CloudFront$20160801$DistributionSummary = {
     Id: string;
+    ARN: string;
     Status: string;
     LastModifiedTime: Date;
     DomainName: string;
-    Aliases: CloudFront$20160128$Aliases;
-    Origins: CloudFront$20160128$Origins;
-    DefaultCacheBehavior: CloudFront$20160128$DefaultCacheBehavior;
-    CacheBehaviors: CloudFront$20160128$CacheBehaviors;
-    CustomErrorResponses: CloudFront$20160128$CustomErrorResponses;
+    Aliases: CloudFront$20160801$Aliases;
+    Origins: CloudFront$20160801$Origins;
+    DefaultCacheBehavior: CloudFront$20160801$DefaultCacheBehavior;
+    CacheBehaviors: CloudFront$20160801$CacheBehaviors;
+    CustomErrorResponses: CloudFront$20160801$CustomErrorResponses;
     Comment: string;
     PriceClass: 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
     Enabled: boolean;
-    ViewerCertificate: CloudFront$20160128$ViewerCertificate;
-    Restrictions: CloudFront$20160128$Restrictions;
+    ViewerCertificate: CloudFront$20160801$ViewerCertificate;
+    Restrictions: CloudFront$20160801$Restrictions;
     WebACLId: string;
   };
-  declare type CloudFront$20160128$DistributionSummaryList = CloudFront$20160128$DistributionSummary[];
-  declare type CloudFront$20160128$ForwardedValues = {
+  declare type CloudFront$20160801$DistributionSummaryList = CloudFront$20160801$DistributionSummary[];
+  declare type CloudFront$20160801$ForwardedValues = {
     QueryString: boolean;
-    Cookies: CloudFront$20160128$CookiePreference;
-    Headers?: CloudFront$20160128$Headers;
+    Cookies: CloudFront$20160801$CookiePreference;
+    Headers?: CloudFront$20160801$Headers;
   };
-  declare type CloudFront$20160128$GeoRestriction = {
+  declare type CloudFront$20160801$GeoRestriction = {
     RestrictionType: 'blacklist' | 'whitelist' | 'none';
     Quantity: number;
-    Items?: CloudFront$20160128$LocationList;
+    Items?: CloudFront$20160801$LocationList;
   };
-  declare type CloudFront$20160128$GeoRestrictionType = 'blacklist' | 'whitelist' | 'none';
-  declare type CloudFront$20160128$GetCloudFrontOriginAccessIdentityConfigRequest = {
+  declare type CloudFront$20160801$GeoRestrictionType = 'blacklist' | 'whitelist' | 'none';
+  declare type CloudFront$20160801$GetCloudFrontOriginAccessIdentityConfigRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetCloudFrontOriginAccessIdentityConfigResult = {
-    CloudFrontOriginAccessIdentityConfig?: CloudFront$20160128$CloudFrontOriginAccessIdentityConfig;
+  declare type CloudFront$20160801$GetCloudFrontOriginAccessIdentityConfigResult = {
+    CloudFrontOriginAccessIdentityConfig?: CloudFront$20160801$CloudFrontOriginAccessIdentityConfig;
     ETag?: string;
   };
-  declare type CloudFront$20160128$GetCloudFrontOriginAccessIdentityRequest = {
+  declare type CloudFront$20160801$GetCloudFrontOriginAccessIdentityRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetCloudFrontOriginAccessIdentityResult = {
-    CloudFrontOriginAccessIdentity?: CloudFront$20160128$CloudFrontOriginAccessIdentity;
+  declare type CloudFront$20160801$GetCloudFrontOriginAccessIdentityResult = {
+    CloudFrontOriginAccessIdentity?: CloudFront$20160801$CloudFrontOriginAccessIdentity;
     ETag?: string;
   };
-  declare type CloudFront$20160128$GetDistributionConfigRequest = {
+  declare type CloudFront$20160801$GetDistributionConfigRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetDistributionConfigResult = {
-    DistributionConfig?: CloudFront$20160128$DistributionConfig;
+  declare type CloudFront$20160801$GetDistributionConfigResult = {
+    DistributionConfig?: CloudFront$20160801$DistributionConfig;
     ETag?: string;
   };
-  declare type CloudFront$20160128$GetDistributionRequest = {
+  declare type CloudFront$20160801$GetDistributionRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetDistributionResult = {
-    Distribution?: CloudFront$20160128$Distribution;
+  declare type CloudFront$20160801$GetDistributionResult = {
+    Distribution?: CloudFront$20160801$Distribution;
     ETag?: string;
   };
-  declare type CloudFront$20160128$GetInvalidationRequest = {
+  declare type CloudFront$20160801$GetInvalidationRequest = {
     DistributionId: string;
     Id: string;
   };
-  declare type CloudFront$20160128$GetInvalidationResult = {
-    Invalidation?: CloudFront$20160128$Invalidation;
+  declare type CloudFront$20160801$GetInvalidationResult = {
+    Invalidation?: CloudFront$20160801$Invalidation;
   };
-  declare type CloudFront$20160128$GetStreamingDistributionConfigRequest = {
+  declare type CloudFront$20160801$GetStreamingDistributionConfigRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetStreamingDistributionConfigResult = {
-    StreamingDistributionConfig?: CloudFront$20160128$StreamingDistributionConfig;
+  declare type CloudFront$20160801$GetStreamingDistributionConfigResult = {
+    StreamingDistributionConfig?: CloudFront$20160801$StreamingDistributionConfig;
     ETag?: string;
   };
-  declare type CloudFront$20160128$GetStreamingDistributionRequest = {
+  declare type CloudFront$20160801$GetStreamingDistributionRequest = {
     Id: string;
   };
-  declare type CloudFront$20160128$GetStreamingDistributionResult = {
-    StreamingDistribution?: CloudFront$20160128$StreamingDistribution;
+  declare type CloudFront$20160801$GetStreamingDistributionResult = {
+    StreamingDistribution?: CloudFront$20160801$StreamingDistribution;
     ETag?: string;
   };
-  declare type CloudFront$20160128$HeaderList = string[];
-  declare type CloudFront$20160128$Headers = {
+  declare type CloudFront$20160801$HeaderList = string[];
+  declare type CloudFront$20160801$Headers = {
     Quantity: number;
-    Items?: CloudFront$20160128$HeaderList;
+    Items?: CloudFront$20160801$HeaderList;
   };
-  declare type CloudFront$20160128$IllegalUpdate = {
+  declare type CloudFront$20160801$IllegalUpdate = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InconsistentQuantities = {
+  declare type CloudFront$20160801$InconsistentQuantities = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidArgument = {
+  declare type CloudFront$20160801$InvalidArgument = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidDefaultRootObject = {
+  declare type CloudFront$20160801$InvalidDefaultRootObject = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidErrorCode = {
+  declare type CloudFront$20160801$InvalidErrorCode = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidForwardCookies = {
+  declare type CloudFront$20160801$InvalidForwardCookies = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidGeoRestrictionParameter = {
+  declare type CloudFront$20160801$InvalidGeoRestrictionParameter = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidHeadersForS3Origin = {
+  declare type CloudFront$20160801$InvalidHeadersForS3Origin = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidIfMatchVersion = {
+  declare type CloudFront$20160801$InvalidIfMatchVersion = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidLocationCode = {
+  declare type CloudFront$20160801$InvalidLocationCode = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidMinimumProtocolVersion = {
+  declare type CloudFront$20160801$InvalidMinimumProtocolVersion = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidOrigin = {
+  declare type CloudFront$20160801$InvalidOrigin = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidOriginAccessIdentity = {
+  declare type CloudFront$20160801$InvalidOriginAccessIdentity = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidProtocolSettings = {
+  declare type CloudFront$20160801$InvalidProtocolSettings = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidRelativePath = {
+  declare type CloudFront$20160801$InvalidRelativePath = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidRequiredProtocol = {
+  declare type CloudFront$20160801$InvalidRequiredProtocol = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidResponseCode = {
+  declare type CloudFront$20160801$InvalidResponseCode = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidTTLOrder = {
+  declare type CloudFront$20160801$InvalidTTLOrder = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidViewerCertificate = {
+  declare type CloudFront$20160801$InvalidTagging = {
     Message?: string;
   };
-  declare type CloudFront$20160128$InvalidWebACLId = {
+  declare type CloudFront$20160801$InvalidViewerCertificate = {
     Message?: string;
   };
-  declare type CloudFront$20160128$Invalidation = {
+  declare type CloudFront$20160801$InvalidWebACLId = {
+    Message?: string;
+  };
+  declare type CloudFront$20160801$Invalidation = {
     Id: string;
     Status: string;
     CreateTime: Date;
-    InvalidationBatch: CloudFront$20160128$InvalidationBatch;
+    InvalidationBatch: CloudFront$20160801$InvalidationBatch;
   };
-  declare type CloudFront$20160128$InvalidationBatch = {
-    Paths: CloudFront$20160128$Paths;
+  declare type CloudFront$20160801$InvalidationBatch = {
+    Paths: CloudFront$20160801$Paths;
     CallerReference: string;
   };
-  declare type CloudFront$20160128$InvalidationList = {
+  declare type CloudFront$20160801$InvalidationList = {
     Marker: string;
     NextMarker?: string;
     MaxItems: number;
     IsTruncated: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$InvalidationSummaryList;
+    Items?: CloudFront$20160801$InvalidationSummaryList;
   };
-  declare type CloudFront$20160128$InvalidationSummary = {
+  declare type CloudFront$20160801$InvalidationSummary = {
     Id: string;
     CreateTime: Date;
     Status: string;
   };
-  declare type CloudFront$20160128$InvalidationSummaryList = CloudFront$20160128$InvalidationSummary[];
-  declare type CloudFront$20160128$ItemSelection = 'none' | 'whitelist' | 'all';
-  declare type CloudFront$20160128$KeyPairIdList = string[];
-  declare type CloudFront$20160128$KeyPairIds = {
+  declare type CloudFront$20160801$InvalidationSummaryList = CloudFront$20160801$InvalidationSummary[];
+  declare type CloudFront$20160801$ItemSelection = 'none' | 'whitelist' | 'all';
+  declare type CloudFront$20160801$KeyPairIdList = string[];
+  declare type CloudFront$20160801$KeyPairIds = {
     Quantity: number;
-    Items?: CloudFront$20160128$KeyPairIdList;
+    Items?: CloudFront$20160801$KeyPairIdList;
   };
-  declare type CloudFront$20160128$ListCloudFrontOriginAccessIdentitiesRequest = {
+  declare type CloudFront$20160801$ListCloudFrontOriginAccessIdentitiesRequest = {
     Marker?: string;
     MaxItems?: string;
   };
-  declare type CloudFront$20160128$ListCloudFrontOriginAccessIdentitiesResult = {
-    CloudFrontOriginAccessIdentityList?: CloudFront$20160128$CloudFrontOriginAccessIdentityList;
+  declare type CloudFront$20160801$ListCloudFrontOriginAccessIdentitiesResult = {
+    CloudFrontOriginAccessIdentityList?: CloudFront$20160801$CloudFrontOriginAccessIdentityList;
   };
-  declare type CloudFront$20160128$ListDistributionsByWebACLIdRequest = {
+  declare type CloudFront$20160801$ListDistributionsByWebACLIdRequest = {
     Marker?: string;
     MaxItems?: string;
     WebACLId: string;
   };
-  declare type CloudFront$20160128$ListDistributionsByWebACLIdResult = {
-    DistributionList?: CloudFront$20160128$DistributionList;
+  declare type CloudFront$20160801$ListDistributionsByWebACLIdResult = {
+    DistributionList?: CloudFront$20160801$DistributionList;
   };
-  declare type CloudFront$20160128$ListDistributionsRequest = {
+  declare type CloudFront$20160801$ListDistributionsRequest = {
     Marker?: string;
     MaxItems?: string;
   };
-  declare type CloudFront$20160128$ListDistributionsResult = {
-    DistributionList?: CloudFront$20160128$DistributionList;
+  declare type CloudFront$20160801$ListDistributionsResult = {
+    DistributionList?: CloudFront$20160801$DistributionList;
   };
-  declare type CloudFront$20160128$ListInvalidationsRequest = {
+  declare type CloudFront$20160801$ListInvalidationsRequest = {
     DistributionId: string;
     Marker?: string;
     MaxItems?: string;
   };
-  declare type CloudFront$20160128$ListInvalidationsResult = {
-    InvalidationList?: CloudFront$20160128$InvalidationList;
+  declare type CloudFront$20160801$ListInvalidationsResult = {
+    InvalidationList?: CloudFront$20160801$InvalidationList;
   };
-  declare type CloudFront$20160128$ListStreamingDistributionsRequest = {
+  declare type CloudFront$20160801$ListStreamingDistributionsRequest = {
     Marker?: string;
     MaxItems?: string;
   };
-  declare type CloudFront$20160128$ListStreamingDistributionsResult = {
-    StreamingDistributionList?: CloudFront$20160128$StreamingDistributionList;
+  declare type CloudFront$20160801$ListStreamingDistributionsResult = {
+    StreamingDistributionList?: CloudFront$20160801$StreamingDistributionList;
   };
-  declare type CloudFront$20160128$LocationList = string[];
-  declare type CloudFront$20160128$LoggingConfig = {
+  declare type CloudFront$20160801$ListTagsForResourceRequest = {
+    Resource: string;
+  };
+  declare type CloudFront$20160801$ListTagsForResourceResult = {
+    Tags: CloudFront$20160801$Tags;
+  };
+  declare type CloudFront$20160801$LocationList = string[];
+  declare type CloudFront$20160801$LoggingConfig = {
     Enabled: boolean;
     IncludeCookies: boolean;
     Bucket: string;
     Prefix: string;
   };
-  declare type CloudFront$20160128$Method = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE';
-  declare type CloudFront$20160128$MethodsList = ('GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE')[];
-  declare type CloudFront$20160128$MinimumProtocolVersion = 'SSLv3' | 'TLSv1';
-  declare type CloudFront$20160128$MissingBody = {
+  declare type CloudFront$20160801$Method = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE';
+  declare type CloudFront$20160801$MethodsList = ('GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE')[];
+  declare type CloudFront$20160801$MinimumProtocolVersion = 'SSLv3' | 'TLSv1';
+  declare type CloudFront$20160801$MissingBody = {
     Message?: string;
   };
-  declare type CloudFront$20160128$NoSuchCloudFrontOriginAccessIdentity = {
+  declare type CloudFront$20160801$NoSuchCloudFrontOriginAccessIdentity = {
     Message?: string;
   };
-  declare type CloudFront$20160128$NoSuchDistribution = {
+  declare type CloudFront$20160801$NoSuchDistribution = {
     Message?: string;
   };
-  declare type CloudFront$20160128$NoSuchInvalidation = {
+  declare type CloudFront$20160801$NoSuchInvalidation = {
     Message?: string;
   };
-  declare type CloudFront$20160128$NoSuchOrigin = {
+  declare type CloudFront$20160801$NoSuchOrigin = {
     Message?: string;
   };
-  declare type CloudFront$20160128$NoSuchStreamingDistribution = {
+  declare type CloudFront$20160801$NoSuchResource = {
     Message?: string;
   };
-  declare type CloudFront$20160128$Origin = {
+  declare type CloudFront$20160801$NoSuchStreamingDistribution = {
+    Message?: string;
+  };
+  declare type CloudFront$20160801$Origin = {
     Id: string;
     DomainName: string;
     OriginPath?: string;
-    CustomHeaders?: CloudFront$20160128$CustomHeaders;
-    S3OriginConfig?: CloudFront$20160128$S3OriginConfig;
-    CustomOriginConfig?: CloudFront$20160128$CustomOriginConfig;
+    CustomHeaders?: CloudFront$20160801$CustomHeaders;
+    S3OriginConfig?: CloudFront$20160801$S3OriginConfig;
+    CustomOriginConfig?: CloudFront$20160801$CustomOriginConfig;
   };
-  declare type CloudFront$20160128$OriginCustomHeader = {
+  declare type CloudFront$20160801$OriginCustomHeader = {
     HeaderName: string;
     HeaderValue: string;
   };
-  declare type CloudFront$20160128$OriginCustomHeadersList = CloudFront$20160128$OriginCustomHeader[];
-  declare type CloudFront$20160128$OriginList = CloudFront$20160128$Origin[];
-  declare type CloudFront$20160128$OriginProtocolPolicy = 'http-only' | 'match-viewer' | 'https-only';
-  declare type CloudFront$20160128$OriginSslProtocols = {
+  declare type CloudFront$20160801$OriginCustomHeadersList = CloudFront$20160801$OriginCustomHeader[];
+  declare type CloudFront$20160801$OriginList = CloudFront$20160801$Origin[];
+  declare type CloudFront$20160801$OriginProtocolPolicy = 'http-only' | 'match-viewer' | 'https-only';
+  declare type CloudFront$20160801$OriginSslProtocols = {
     Quantity: number;
-    Items: CloudFront$20160128$SslProtocolsList;
+    Items: CloudFront$20160801$SslProtocolsList;
   };
-  declare type CloudFront$20160128$Origins = {
+  declare type CloudFront$20160801$Origins = {
     Quantity: number;
-    Items?: CloudFront$20160128$OriginList;
+    Items?: CloudFront$20160801$OriginList;
   };
-  declare type CloudFront$20160128$PathList = string[];
-  declare type CloudFront$20160128$Paths = {
+  declare type CloudFront$20160801$PathList = string[];
+  declare type CloudFront$20160801$Paths = {
     Quantity: number;
-    Items?: CloudFront$20160128$PathList;
+    Items?: CloudFront$20160801$PathList;
   };
-  declare type CloudFront$20160128$PreconditionFailed = {
+  declare type CloudFront$20160801$PreconditionFailed = {
     Message?: string;
   };
-  declare type CloudFront$20160128$PriceClass = 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
-  declare type CloudFront$20160128$Restrictions = {
-    GeoRestriction: CloudFront$20160128$GeoRestriction;
+  declare type CloudFront$20160801$PriceClass = 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
+  declare type CloudFront$20160801$Restrictions = {
+    GeoRestriction: CloudFront$20160801$GeoRestriction;
   };
-  declare type CloudFront$20160128$S3Origin = {
+  declare type CloudFront$20160801$S3Origin = {
     DomainName: string;
     OriginAccessIdentity: string;
   };
-  declare type CloudFront$20160128$S3OriginConfig = {
+  declare type CloudFront$20160801$S3OriginConfig = {
     OriginAccessIdentity: string;
   };
-  declare type CloudFront$20160128$SSLSupportMethod = 'sni-only' | 'vip';
-  declare type CloudFront$20160128$Signer = {
+  declare type CloudFront$20160801$SSLSupportMethod = 'sni-only' | 'vip';
+  declare type CloudFront$20160801$Signer = {
     AwsAccountNumber?: string;
-    KeyPairIds?: CloudFront$20160128$KeyPairIds;
+    KeyPairIds?: CloudFront$20160801$KeyPairIds;
   };
-  declare type CloudFront$20160128$SignerList = CloudFront$20160128$Signer[];
-  declare type CloudFront$20160128$SslProtocol = 'SSLv3' | 'TLSv1' | 'TLSv1.1' | 'TLSv1.2';
-  declare type CloudFront$20160128$SslProtocolsList = ('SSLv3' | 'TLSv1' | 'TLSv1.1' | 'TLSv1.2')[];
-  declare type CloudFront$20160128$StreamingDistribution = {
+  declare type CloudFront$20160801$SignerList = CloudFront$20160801$Signer[];
+  declare type CloudFront$20160801$SslProtocol = 'SSLv3' | 'TLSv1' | 'TLSv1.1' | 'TLSv1.2';
+  declare type CloudFront$20160801$SslProtocolsList = ('SSLv3' | 'TLSv1' | 'TLSv1.1' | 'TLSv1.2')[];
+  declare type CloudFront$20160801$StreamingDistribution = {
     Id: string;
+    ARN: string;
     Status: string;
     LastModifiedTime?: Date;
     DomainName: string;
-    ActiveTrustedSigners: CloudFront$20160128$ActiveTrustedSigners;
-    StreamingDistributionConfig: CloudFront$20160128$StreamingDistributionConfig;
+    ActiveTrustedSigners: CloudFront$20160801$ActiveTrustedSigners;
+    StreamingDistributionConfig: CloudFront$20160801$StreamingDistributionConfig;
   };
-  declare type CloudFront$20160128$StreamingDistributionAlreadyExists = {
+  declare type CloudFront$20160801$StreamingDistributionAlreadyExists = {
     Message?: string;
   };
-  declare type CloudFront$20160128$StreamingDistributionConfig = {
+  declare type CloudFront$20160801$StreamingDistributionConfig = {
     CallerReference: string;
-    S3Origin: CloudFront$20160128$S3Origin;
-    Aliases?: CloudFront$20160128$Aliases;
+    S3Origin: CloudFront$20160801$S3Origin;
+    Aliases?: CloudFront$20160801$Aliases;
     Comment: string;
-    Logging?: CloudFront$20160128$StreamingLoggingConfig;
-    TrustedSigners: CloudFront$20160128$TrustedSigners;
+    Logging?: CloudFront$20160801$StreamingLoggingConfig;
+    TrustedSigners: CloudFront$20160801$TrustedSigners;
     PriceClass?: 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
     Enabled: boolean;
   };
-  declare type CloudFront$20160128$StreamingDistributionList = {
+  declare type CloudFront$20160801$StreamingDistributionConfigWithTags = {
+    StreamingDistributionConfig: CloudFront$20160801$StreamingDistributionConfig;
+    Tags: CloudFront$20160801$Tags;
+  };
+  declare type CloudFront$20160801$StreamingDistributionList = {
     Marker: string;
     NextMarker?: string;
     MaxItems: number;
     IsTruncated: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$StreamingDistributionSummaryList;
+    Items?: CloudFront$20160801$StreamingDistributionSummaryList;
   };
-  declare type CloudFront$20160128$StreamingDistributionNotDisabled = {
+  declare type CloudFront$20160801$StreamingDistributionNotDisabled = {
     Message?: string;
   };
-  declare type CloudFront$20160128$StreamingDistributionSummary = {
+  declare type CloudFront$20160801$StreamingDistributionSummary = {
     Id: string;
+    ARN: string;
     Status: string;
     LastModifiedTime: Date;
     DomainName: string;
-    S3Origin: CloudFront$20160128$S3Origin;
-    Aliases: CloudFront$20160128$Aliases;
-    TrustedSigners: CloudFront$20160128$TrustedSigners;
+    S3Origin: CloudFront$20160801$S3Origin;
+    Aliases: CloudFront$20160801$Aliases;
+    TrustedSigners: CloudFront$20160801$TrustedSigners;
     Comment: string;
     PriceClass: 'PriceClass_100' | 'PriceClass_200' | 'PriceClass_All';
     Enabled: boolean;
   };
-  declare type CloudFront$20160128$StreamingDistributionSummaryList = CloudFront$20160128$StreamingDistributionSummary[];
-  declare type CloudFront$20160128$StreamingLoggingConfig = {
+  declare type CloudFront$20160801$StreamingDistributionSummaryList = CloudFront$20160801$StreamingDistributionSummary[];
+  declare type CloudFront$20160801$StreamingLoggingConfig = {
     Enabled: boolean;
     Bucket: string;
     Prefix: string;
   };
-  declare type CloudFront$20160128$TooManyCacheBehaviors = {
+  declare type CloudFront$20160801$Tag = {
+    Key: string;
+    Value?: string;
+  };
+  declare type CloudFront$20160801$TagKeyList = string[];
+  declare type CloudFront$20160801$TagKeys = {
+    Items?: CloudFront$20160801$TagKeyList;
+  };
+  declare type CloudFront$20160801$TagList = CloudFront$20160801$Tag[];
+  declare type CloudFront$20160801$TagResourceRequest = {
+    Resource: string;
+    Tags: CloudFront$20160801$Tags;
+  };
+  declare type CloudFront$20160801$Tags = {
+    Items?: CloudFront$20160801$TagList;
+  };
+  declare type CloudFront$20160801$TooManyCacheBehaviors = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyCertificates = {
+  declare type CloudFront$20160801$TooManyCertificates = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyCloudFrontOriginAccessIdentities = {
+  declare type CloudFront$20160801$TooManyCloudFrontOriginAccessIdentities = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyCookieNamesInWhiteList = {
+  declare type CloudFront$20160801$TooManyCookieNamesInWhiteList = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyDistributionCNAMEs = {
+  declare type CloudFront$20160801$TooManyDistributionCNAMEs = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyDistributions = {
+  declare type CloudFront$20160801$TooManyDistributions = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyHeadersInForwardedValues = {
+  declare type CloudFront$20160801$TooManyHeadersInForwardedValues = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyInvalidationsInProgress = {
+  declare type CloudFront$20160801$TooManyInvalidationsInProgress = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyOriginCustomHeaders = {
+  declare type CloudFront$20160801$TooManyOriginCustomHeaders = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyOrigins = {
+  declare type CloudFront$20160801$TooManyOrigins = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyStreamingDistributionCNAMEs = {
+  declare type CloudFront$20160801$TooManyStreamingDistributionCNAMEs = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyStreamingDistributions = {
+  declare type CloudFront$20160801$TooManyStreamingDistributions = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TooManyTrustedSigners = {
+  declare type CloudFront$20160801$TooManyTrustedSigners = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TrustedSignerDoesNotExist = {
+  declare type CloudFront$20160801$TrustedSignerDoesNotExist = {
     Message?: string;
   };
-  declare type CloudFront$20160128$TrustedSigners = {
+  declare type CloudFront$20160801$TrustedSigners = {
     Enabled: boolean;
     Quantity: number;
-    Items?: CloudFront$20160128$AwsAccountNumberList;
+    Items?: CloudFront$20160801$AwsAccountNumberList;
   };
-  declare type CloudFront$20160128$UpdateCloudFrontOriginAccessIdentityRequest = {
-    CloudFrontOriginAccessIdentityConfig: CloudFront$20160128$CloudFrontOriginAccessIdentityConfig;
+  declare type CloudFront$20160801$UntagResourceRequest = {
+    Resource: string;
+    TagKeys: CloudFront$20160801$TagKeys;
+  };
+  declare type CloudFront$20160801$UpdateCloudFrontOriginAccessIdentityRequest = {
+    CloudFrontOriginAccessIdentityConfig: CloudFront$20160801$CloudFrontOriginAccessIdentityConfig;
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$UpdateCloudFrontOriginAccessIdentityResult = {
-    CloudFrontOriginAccessIdentity?: CloudFront$20160128$CloudFrontOriginAccessIdentity;
+  declare type CloudFront$20160801$UpdateCloudFrontOriginAccessIdentityResult = {
+    CloudFrontOriginAccessIdentity?: CloudFront$20160801$CloudFrontOriginAccessIdentity;
     ETag?: string;
   };
-  declare type CloudFront$20160128$UpdateDistributionRequest = {
-    DistributionConfig: CloudFront$20160128$DistributionConfig;
+  declare type CloudFront$20160801$UpdateDistributionRequest = {
+    DistributionConfig: CloudFront$20160801$DistributionConfig;
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$UpdateDistributionResult = {
-    Distribution?: CloudFront$20160128$Distribution;
+  declare type CloudFront$20160801$UpdateDistributionResult = {
+    Distribution?: CloudFront$20160801$Distribution;
     ETag?: string;
   };
-  declare type CloudFront$20160128$UpdateStreamingDistributionRequest = {
-    StreamingDistributionConfig: CloudFront$20160128$StreamingDistributionConfig;
+  declare type CloudFront$20160801$UpdateStreamingDistributionRequest = {
+    StreamingDistributionConfig: CloudFront$20160801$StreamingDistributionConfig;
     Id: string;
     IfMatch?: string;
   };
-  declare type CloudFront$20160128$UpdateStreamingDistributionResult = {
-    StreamingDistribution?: CloudFront$20160128$StreamingDistribution;
+  declare type CloudFront$20160801$UpdateStreamingDistributionResult = {
+    StreamingDistribution?: CloudFront$20160801$StreamingDistribution;
     ETag?: string;
   };
-  declare type CloudFront$20160128$ViewerCertificate = {
+  declare type CloudFront$20160801$ViewerCertificate = {
     CloudFrontDefaultCertificate?: boolean;
     IAMCertificateId?: string;
     ACMCertificateArn?: string;
@@ -2741,8 +2828,8 @@ declare module 'aws-sdk' {
     Certificate?: string;
     CertificateSource?: 'cloudfront' | 'iam' | 'acm';
   };
-  declare type CloudFront$20160128$ViewerProtocolPolicy = 'allow-all' | 'https-only' | 'redirect-to-https';
-  declare type CloudFront$20160128$timestamp = Date;
+  declare type CloudFront$20160801$ViewerProtocolPolicy = 'allow-all' | 'https-only' | 'redirect-to-https';
+  declare type CloudFront$20160801$timestamp = Date;
   declare type CloudHSM$20140530$AZList = string[];
   declare type CloudHSM$20140530$AddTagsToResourceRequest = {
     ResourceArn: string;
@@ -13920,11 +14007,15 @@ declare module 'aws-sdk' {
   declare type ECR$20150921$LimitExceededException = {
     message?: string;
   };
+  declare type ECR$20150921$ListImagesFilter = {
+    tagStatus?: 'TAGGED' | 'UNTAGGED';
+  };
   declare type ECR$20150921$ListImagesRequest = {
     registryId?: string;
     repositoryName: string;
     nextToken?: string;
     maxResults?: number;
+    filter?: ECR$20150921$ListImagesFilter;
   };
   declare type ECR$20150921$ListImagesResponse = {
     imageIds?: ECR$20150921$ImageIdentifierList;
@@ -13972,6 +14063,7 @@ declare module 'aws-sdk' {
     repositoryName?: string;
     policyText?: string;
   };
+  declare type ECR$20150921$TagStatus = 'TAGGED' | 'UNTAGGED';
   declare type ECR$20150921$UploadLayerPartRequest = {
     registryId?: string;
     repositoryName: string;
@@ -14262,6 +14354,7 @@ declare module 'aws-sdk' {
     nextToken?: string;
   };
   declare type ECS$20141113$LoadBalancer = {
+    targetGroupArn?: string;
     loadBalancerName?: string;
     containerName?: string;
     containerPort?: number;
@@ -16048,6 +16141,7 @@ declare module 'aws-sdk' {
     PolicyName: string;
   };
   declare type ELB$20120601$DeleteLoadBalancerPolicyOutput = {};
+  declare type ELB$20120601$DependencyThrottleException = {};
   declare type ELB$20120601$DeregisterEndPointsInput = {
     LoadBalancerName: string;
     Instances: ELB$20120601$Instances;
@@ -16287,6 +16381,408 @@ declare module 'aws-sdk' {
   declare type ELB$20120601$TooManyAccessPointsException = {};
   declare type ELB$20120601$TooManyPoliciesException = {};
   declare type ELB$20120601$TooManyTagsException = {};
+  declare type ELB$20120601$UnsupportedProtocolException = {};
+  declare type ELBv2$20151201$Action = {
+    Type: 'forward';
+    TargetGroupArn: string;
+  };
+  declare type ELBv2$20151201$ActionTypeEnum = 'forward';
+  declare type ELBv2$20151201$Actions = ELBv2$20151201$Action[];
+  declare type ELBv2$20151201$AddTagsInput = {
+    ResourceArns: ELBv2$20151201$ResourceArns;
+    Tags: ELBv2$20151201$TagList;
+  };
+  declare type ELBv2$20151201$AddTagsOutput = {};
+  declare type ELBv2$20151201$AvailabilityZone = {
+    ZoneName?: string;
+    SubnetId?: string;
+  };
+  declare type ELBv2$20151201$AvailabilityZones = ELBv2$20151201$AvailabilityZone[];
+  declare type ELBv2$20151201$Certificate = {
+    CertificateArn?: string;
+  };
+  declare type ELBv2$20151201$CertificateList = ELBv2$20151201$Certificate[];
+  declare type ELBv2$20151201$CertificateNotFoundException = {};
+  declare type ELBv2$20151201$Cipher = {
+    Name?: string;
+    Priority?: number;
+  };
+  declare type ELBv2$20151201$Ciphers = ELBv2$20151201$Cipher[];
+  declare type ELBv2$20151201$CreateListenerInput = {
+    LoadBalancerArn: string;
+    Protocol: 'HTTP' | 'HTTPS';
+    Port: number;
+    SslPolicy?: string;
+    Certificates?: ELBv2$20151201$CertificateList;
+    DefaultActions: ELBv2$20151201$Actions;
+  };
+  declare type ELBv2$20151201$CreateListenerOutput = {
+    Listeners?: ELBv2$20151201$Listeners;
+  };
+  declare type ELBv2$20151201$CreateLoadBalancerInput = {
+    Name: string;
+    Subnets: ELBv2$20151201$Subnets;
+    SecurityGroups?: ELBv2$20151201$SecurityGroups;
+    Scheme?: 'internet-facing' | 'internal';
+    Tags?: ELBv2$20151201$TagList;
+  };
+  declare type ELBv2$20151201$CreateLoadBalancerOutput = {
+    LoadBalancers?: ELBv2$20151201$LoadBalancers;
+  };
+  declare type ELBv2$20151201$CreateRuleInput = {
+    ListenerArn: string;
+    Conditions: ELBv2$20151201$RuleConditionList;
+    Priority: number;
+    Actions: ELBv2$20151201$Actions;
+  };
+  declare type ELBv2$20151201$CreateRuleOutput = {
+    Rules?: ELBv2$20151201$Rules;
+  };
+  declare type ELBv2$20151201$CreateTargetGroupInput = {
+    Name: string;
+    Protocol: 'HTTP' | 'HTTPS';
+    Port: number;
+    VpcId: string;
+    HealthCheckProtocol?: 'HTTP' | 'HTTPS';
+    HealthCheckPort?: string;
+    HealthCheckPath?: string;
+    HealthCheckIntervalSeconds?: number;
+    HealthCheckTimeoutSeconds?: number;
+    HealthyThresholdCount?: number;
+    UnhealthyThresholdCount?: number;
+    Matcher?: ELBv2$20151201$Matcher;
+  };
+  declare type ELBv2$20151201$CreateTargetGroupOutput = {
+    TargetGroups?: ELBv2$20151201$TargetGroups;
+  };
+  declare type ELBv2$20151201$CreatedTime = Date;
+  declare type ELBv2$20151201$DeleteListenerInput = {
+    ListenerArn: string;
+  };
+  declare type ELBv2$20151201$DeleteListenerOutput = {};
+  declare type ELBv2$20151201$DeleteLoadBalancerInput = {
+    LoadBalancerArn: string;
+  };
+  declare type ELBv2$20151201$DeleteLoadBalancerOutput = {};
+  declare type ELBv2$20151201$DeleteRuleInput = {
+    RuleArn: string;
+  };
+  declare type ELBv2$20151201$DeleteRuleOutput = {};
+  declare type ELBv2$20151201$DeleteTargetGroupInput = {
+    TargetGroupArn: string;
+  };
+  declare type ELBv2$20151201$DeleteTargetGroupOutput = {};
+  declare type ELBv2$20151201$DeregisterTargetsInput = {
+    TargetGroupArn: string;
+    Targets: ELBv2$20151201$TargetDescriptions;
+  };
+  declare type ELBv2$20151201$DeregisterTargetsOutput = {};
+  declare type ELBv2$20151201$DescribeListenersInput = {
+    LoadBalancerArn?: string;
+    ListenerArns?: ELBv2$20151201$ListenerArns;
+    Marker?: string;
+    PageSize?: number;
+  };
+  declare type ELBv2$20151201$DescribeListenersOutput = {
+    Listeners?: ELBv2$20151201$Listeners;
+    NextMarker?: string;
+  };
+  declare type ELBv2$20151201$DescribeLoadBalancerAttributesInput = {
+    LoadBalancerArn: string;
+  };
+  declare type ELBv2$20151201$DescribeLoadBalancerAttributesOutput = {
+    Attributes?: ELBv2$20151201$LoadBalancerAttributes;
+  };
+  declare type ELBv2$20151201$DescribeLoadBalancersInput = {
+    LoadBalancerArns?: ELBv2$20151201$LoadBalancerArns;
+    Names?: ELBv2$20151201$LoadBalancerNames;
+    Marker?: string;
+    PageSize?: number;
+  };
+  declare type ELBv2$20151201$DescribeLoadBalancersOutput = {
+    LoadBalancers?: ELBv2$20151201$LoadBalancers;
+    NextMarker?: string;
+  };
+  declare type ELBv2$20151201$DescribeRulesInput = {
+    ListenerArn?: string;
+    RuleArns?: ELBv2$20151201$RuleArns;
+  };
+  declare type ELBv2$20151201$DescribeRulesOutput = {
+    Rules?: ELBv2$20151201$Rules;
+  };
+  declare type ELBv2$20151201$DescribeSSLPoliciesInput = {
+    Names?: ELBv2$20151201$SslPolicyNames;
+    Marker?: string;
+    PageSize?: number;
+  };
+  declare type ELBv2$20151201$DescribeSSLPoliciesOutput = {
+    SslPolicies?: ELBv2$20151201$SslPolicies;
+    NextMarker?: string;
+  };
+  declare type ELBv2$20151201$DescribeTagsInput = {
+    ResourceArns: ELBv2$20151201$ResourceArns;
+  };
+  declare type ELBv2$20151201$DescribeTagsOutput = {
+    TagDescriptions?: ELBv2$20151201$TagDescriptions;
+  };
+  declare type ELBv2$20151201$DescribeTargetGroupAttributesInput = {
+    TargetGroupArn: string;
+  };
+  declare type ELBv2$20151201$DescribeTargetGroupAttributesOutput = {
+    Attributes?: ELBv2$20151201$TargetGroupAttributes;
+  };
+  declare type ELBv2$20151201$DescribeTargetGroupsInput = {
+    LoadBalancerArn?: string;
+    TargetGroupArns?: ELBv2$20151201$TargetGroupArns;
+    Names?: ELBv2$20151201$TargetGroupNames;
+    Marker?: string;
+    PageSize?: number;
+  };
+  declare type ELBv2$20151201$DescribeTargetGroupsOutput = {
+    TargetGroups?: ELBv2$20151201$TargetGroups;
+    NextMarker?: string;
+  };
+  declare type ELBv2$20151201$DescribeTargetHealthInput = {
+    TargetGroupArn: string;
+    Targets?: ELBv2$20151201$TargetDescriptions;
+  };
+  declare type ELBv2$20151201$DescribeTargetHealthOutput = {
+    TargetHealthDescriptions?: ELBv2$20151201$TargetHealthDescriptions;
+  };
+  declare type ELBv2$20151201$DuplicateListenerException = {};
+  declare type ELBv2$20151201$DuplicateLoadBalancerNameException = {};
+  declare type ELBv2$20151201$DuplicateTagKeysException = {};
+  declare type ELBv2$20151201$DuplicateTargetGroupNameException = {};
+  declare type ELBv2$20151201$HealthUnavailableException = {};
+  declare type ELBv2$20151201$IncompatibleProtocolsException = {};
+  declare type ELBv2$20151201$InvalidConfigurationRequestException = {};
+  declare type ELBv2$20151201$InvalidSchemeException = {};
+  declare type ELBv2$20151201$InvalidSecurityGroupException = {};
+  declare type ELBv2$20151201$InvalidSubnetException = {};
+  declare type ELBv2$20151201$InvalidTargetException = {};
+  declare type ELBv2$20151201$ListOfString = string[];
+  declare type ELBv2$20151201$Listener = {
+    ListenerArn?: string;
+    LoadBalancerArn?: string;
+    Port?: number;
+    Protocol?: 'HTTP' | 'HTTPS';
+    Certificates?: ELBv2$20151201$CertificateList;
+    SslPolicy?: string;
+    DefaultActions?: ELBv2$20151201$Actions;
+  };
+  declare type ELBv2$20151201$ListenerArns = string[];
+  declare type ELBv2$20151201$ListenerNotFoundException = {};
+  declare type ELBv2$20151201$Listeners = ELBv2$20151201$Listener[];
+  declare type ELBv2$20151201$LoadBalancer = {
+    LoadBalancerArn?: string;
+    DNSName?: string;
+    CanonicalHostedZoneId?: string;
+    CreatedTime?: Date;
+    LoadBalancerName?: string;
+    Scheme?: 'internet-facing' | 'internal';
+    VpcId?: string;
+    State?: ELBv2$20151201$LoadBalancerState;
+    Type?: 'application';
+    AvailabilityZones?: ELBv2$20151201$AvailabilityZones;
+    SecurityGroups?: ELBv2$20151201$SecurityGroups;
+  };
+  declare type ELBv2$20151201$LoadBalancerArns = string[];
+  declare type ELBv2$20151201$LoadBalancerAttribute = {
+    Key?: string;
+    Value?: string;
+  };
+  declare type ELBv2$20151201$LoadBalancerAttributes = ELBv2$20151201$LoadBalancerAttribute[];
+  declare type ELBv2$20151201$LoadBalancerNames = string[];
+  declare type ELBv2$20151201$LoadBalancerNotFoundException = {};
+  declare type ELBv2$20151201$LoadBalancerSchemeEnum = 'internet-facing' | 'internal';
+  declare type ELBv2$20151201$LoadBalancerState = {
+    Code?: 'active' | 'provisioning' | 'failed';
+    Reason?: string;
+  };
+  declare type ELBv2$20151201$LoadBalancerStateEnum = 'active' | 'provisioning' | 'failed';
+  declare type ELBv2$20151201$LoadBalancerTypeEnum = 'application';
+  declare type ELBv2$20151201$LoadBalancers = ELBv2$20151201$LoadBalancer[];
+  declare type ELBv2$20151201$Matcher = {
+    HttpCode: string;
+  };
+  declare type ELBv2$20151201$ModifyListenerInput = {
+    ListenerArn: string;
+    Port?: number;
+    Protocol?: 'HTTP' | 'HTTPS';
+    SslPolicy?: string;
+    Certificates?: ELBv2$20151201$CertificateList;
+    DefaultActions?: ELBv2$20151201$Actions;
+  };
+  declare type ELBv2$20151201$ModifyListenerOutput = {
+    Listeners?: ELBv2$20151201$Listeners;
+  };
+  declare type ELBv2$20151201$ModifyLoadBalancerAttributesInput = {
+    LoadBalancerArn: string;
+    Attributes: ELBv2$20151201$LoadBalancerAttributes;
+  };
+  declare type ELBv2$20151201$ModifyLoadBalancerAttributesOutput = {
+    Attributes?: ELBv2$20151201$LoadBalancerAttributes;
+  };
+  declare type ELBv2$20151201$ModifyRuleInput = {
+    RuleArn: string;
+    Conditions?: ELBv2$20151201$RuleConditionList;
+    Actions?: ELBv2$20151201$Actions;
+  };
+  declare type ELBv2$20151201$ModifyRuleOutput = {
+    Rules?: ELBv2$20151201$Rules;
+  };
+  declare type ELBv2$20151201$ModifyTargetGroupAttributesInput = {
+    TargetGroupArn: string;
+    Attributes: ELBv2$20151201$TargetGroupAttributes;
+  };
+  declare type ELBv2$20151201$ModifyTargetGroupAttributesOutput = {
+    Attributes?: ELBv2$20151201$TargetGroupAttributes;
+  };
+  declare type ELBv2$20151201$ModifyTargetGroupInput = {
+    TargetGroupArn: string;
+    HealthCheckProtocol?: 'HTTP' | 'HTTPS';
+    HealthCheckPort?: string;
+    HealthCheckPath?: string;
+    HealthCheckIntervalSeconds?: number;
+    HealthCheckTimeoutSeconds?: number;
+    HealthyThresholdCount?: number;
+    UnhealthyThresholdCount?: number;
+    Matcher?: ELBv2$20151201$Matcher;
+  };
+  declare type ELBv2$20151201$ModifyTargetGroupOutput = {
+    TargetGroups?: ELBv2$20151201$TargetGroups;
+  };
+  declare type ELBv2$20151201$OperationNotPermittedException = {};
+  declare type ELBv2$20151201$PriorityInUseException = {};
+  declare type ELBv2$20151201$ProtocolEnum = 'HTTP' | 'HTTPS';
+  declare type ELBv2$20151201$RegisterTargetsInput = {
+    TargetGroupArn: string;
+    Targets: ELBv2$20151201$TargetDescriptions;
+  };
+  declare type ELBv2$20151201$RegisterTargetsOutput = {};
+  declare type ELBv2$20151201$RemoveTagsInput = {
+    ResourceArns: ELBv2$20151201$ResourceArns;
+    TagKeys: ELBv2$20151201$TagKeys;
+  };
+  declare type ELBv2$20151201$RemoveTagsOutput = {};
+  declare type ELBv2$20151201$ResourceArns = string[];
+  declare type ELBv2$20151201$ResourceInUseException = {};
+  declare type ELBv2$20151201$Rule = {
+    RuleArn?: string;
+    Priority?: string;
+    Conditions?: ELBv2$20151201$RuleConditionList;
+    Actions?: ELBv2$20151201$Actions;
+    IsDefault?: boolean;
+  };
+  declare type ELBv2$20151201$RuleArns = string[];
+  declare type ELBv2$20151201$RuleCondition = {
+    Field?: string;
+    Values?: ELBv2$20151201$ListOfString;
+  };
+  declare type ELBv2$20151201$RuleConditionList = ELBv2$20151201$RuleCondition[];
+  declare type ELBv2$20151201$RuleNotFoundException = {};
+  declare type ELBv2$20151201$RulePriorityList = ELBv2$20151201$RulePriorityPair[];
+  declare type ELBv2$20151201$RulePriorityPair = {
+    RuleArn?: string;
+    Priority?: number;
+  };
+  declare type ELBv2$20151201$Rules = ELBv2$20151201$Rule[];
+  declare type ELBv2$20151201$SSLPolicyNotFoundException = {};
+  declare type ELBv2$20151201$SecurityGroups = string[];
+  declare type ELBv2$20151201$SetRulePrioritiesInput = {
+    RulePriorities: ELBv2$20151201$RulePriorityList;
+  };
+  declare type ELBv2$20151201$SetRulePrioritiesOutput = {
+    Rules?: ELBv2$20151201$Rules;
+  };
+  declare type ELBv2$20151201$SetSecurityGroupsInput = {
+    LoadBalancerArn: string;
+    SecurityGroups: ELBv2$20151201$SecurityGroups;
+  };
+  declare type ELBv2$20151201$SetSecurityGroupsOutput = {
+    SecurityGroupIds?: ELBv2$20151201$SecurityGroups;
+  };
+  declare type ELBv2$20151201$SetSubnetsInput = {
+    LoadBalancerArn: string;
+    Subnets: ELBv2$20151201$Subnets;
+  };
+  declare type ELBv2$20151201$SetSubnetsOutput = {
+    AvailabilityZones?: ELBv2$20151201$AvailabilityZones;
+  };
+  declare type ELBv2$20151201$SslPolicies = ELBv2$20151201$SslPolicy[];
+  declare type ELBv2$20151201$SslPolicy = {
+    SslProtocols?: ELBv2$20151201$SslProtocols;
+    Ciphers?: ELBv2$20151201$Ciphers;
+    Name?: string;
+  };
+  declare type ELBv2$20151201$SslPolicyNames = string[];
+  declare type ELBv2$20151201$SslProtocols = string[];
+  declare type ELBv2$20151201$SubnetNotFoundException = {};
+  declare type ELBv2$20151201$Subnets = string[];
+  declare type ELBv2$20151201$Tag = {
+    Key: string;
+    Value?: string;
+  };
+  declare type ELBv2$20151201$TagDescription = {
+    ResourceArn?: string;
+    Tags?: ELBv2$20151201$TagList;
+  };
+  declare type ELBv2$20151201$TagDescriptions = ELBv2$20151201$TagDescription[];
+  declare type ELBv2$20151201$TagKeys = string[];
+  declare type ELBv2$20151201$TagList = ELBv2$20151201$Tag[];
+  declare type ELBv2$20151201$TargetDescription = {
+    Id: string;
+    Port?: number;
+  };
+  declare type ELBv2$20151201$TargetDescriptions = ELBv2$20151201$TargetDescription[];
+  declare type ELBv2$20151201$TargetGroup = {
+    TargetGroupArn?: string;
+    TargetGroupName?: string;
+    Protocol?: 'HTTP' | 'HTTPS';
+    Port?: number;
+    VpcId?: string;
+    HealthCheckProtocol?: 'HTTP' | 'HTTPS';
+    HealthCheckPort?: string;
+    HealthCheckIntervalSeconds?: number;
+    HealthCheckTimeoutSeconds?: number;
+    HealthyThresholdCount?: number;
+    UnhealthyThresholdCount?: number;
+    HealthCheckPath?: string;
+    Matcher?: ELBv2$20151201$Matcher;
+    LoadBalancerArns?: ELBv2$20151201$LoadBalancerArns;
+  };
+  declare type ELBv2$20151201$TargetGroupArns = string[];
+  declare type ELBv2$20151201$TargetGroupAssociationLimitException = {};
+  declare type ELBv2$20151201$TargetGroupAttribute = {
+    Key?: string;
+    Value?: string;
+  };
+  declare type ELBv2$20151201$TargetGroupAttributes = ELBv2$20151201$TargetGroupAttribute[];
+  declare type ELBv2$20151201$TargetGroupNames = string[];
+  declare type ELBv2$20151201$TargetGroupNotFoundException = {};
+  declare type ELBv2$20151201$TargetGroups = ELBv2$20151201$TargetGroup[];
+  declare type ELBv2$20151201$TargetHealth = {
+    State?: 'initial' | 'healthy' | 'unhealthy' | 'unused' | 'draining';
+    Reason?: 'Elb.RegistrationInProgress' | 'Elb.InitialHealthChecking' | 'Target.ResponseCodeMismatch' | 'Target.Timeout' | 'Target.FailedHealthChecks' | 'Target.NotRegistered' | 'Target.NotInUse' | 'Target.DeregistrationInProgress' | 'Target.InvalidState' | 'Elb.InternalError';
+    Description?: string;
+  };
+  declare type ELBv2$20151201$TargetHealthDescription = {
+    Target?: ELBv2$20151201$TargetDescription;
+    HealthCheckPort?: string;
+    TargetHealth?: ELBv2$20151201$TargetHealth;
+  };
+  declare type ELBv2$20151201$TargetHealthDescriptions = ELBv2$20151201$TargetHealthDescription[];
+  declare type ELBv2$20151201$TargetHealthReasonEnum = 'Elb.RegistrationInProgress' | 'Elb.InitialHealthChecking' | 'Target.ResponseCodeMismatch' | 'Target.Timeout' | 'Target.FailedHealthChecks' | 'Target.NotRegistered' | 'Target.NotInUse' | 'Target.DeregistrationInProgress' | 'Target.InvalidState' | 'Elb.InternalError';
+  declare type ELBv2$20151201$TargetHealthStateEnum = 'initial' | 'healthy' | 'unhealthy' | 'unused' | 'draining';
+  declare type ELBv2$20151201$TooManyCertificatesException = {};
+  declare type ELBv2$20151201$TooManyListenersException = {};
+  declare type ELBv2$20151201$TooManyLoadBalancersException = {};
+  declare type ELBv2$20151201$TooManyRegistrationsForTargetIdException = {};
+  declare type ELBv2$20151201$TooManyRulesException = {};
+  declare type ELBv2$20151201$TooManyTagsException = {};
+  declare type ELBv2$20151201$TooManyTargetGroupsException = {};
+  declare type ELBv2$20151201$TooManyTargetsException = {};
+  declare type ELBv2$20151201$UnsupportedProtocolException = {};
   declare type EMR$20090331$ActionOnFailure = 'TERMINATE_JOB_FLOW' | 'TERMINATE_CLUSTER' | 'CANCEL_AND_WAIT' | 'CONTINUE';
   declare type EMR$20090331$AddInstanceGroupsInput = {
     InstanceGroups: EMR$20090331$InstanceGroupConfigList;
@@ -21161,6 +21657,332 @@ declare module 'aws-sdk' {
     [key: string]: string;
   };
   declare type Kinesis$20131202$Timestamp = Date;
+  declare type KinesisAnalytics$20150814$AddApplicationInputRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    Input: KinesisAnalytics$20150814$Input;
+  };
+  declare type KinesisAnalytics$20150814$AddApplicationInputResponse = {};
+  declare type KinesisAnalytics$20150814$AddApplicationOutputRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    Output: KinesisAnalytics$20150814$Output;
+  };
+  declare type KinesisAnalytics$20150814$AddApplicationOutputResponse = {};
+  declare type KinesisAnalytics$20150814$AddApplicationReferenceDataSourceRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    ReferenceDataSource: KinesisAnalytics$20150814$ReferenceDataSource;
+  };
+  declare type KinesisAnalytics$20150814$AddApplicationReferenceDataSourceResponse = {};
+  declare type KinesisAnalytics$20150814$ApplicationDetail = {
+    ApplicationName: string;
+    ApplicationDescription?: string;
+    ApplicationARN: string;
+    ApplicationStatus: 'DELETING' | 'STARTING' | 'STOPPING' | 'READY' | 'RUNNING' | 'UPDATING';
+    CreateTimestamp?: Date;
+    LastUpdateTimestamp?: Date;
+    InputDescriptions?: KinesisAnalytics$20150814$InputDescriptions;
+    OutputDescriptions?: KinesisAnalytics$20150814$OutputDescriptions;
+    ReferenceDataSourceDescriptions?: KinesisAnalytics$20150814$ReferenceDataSourceDescriptions;
+    ApplicationCode?: string;
+    ApplicationVersionId: number;
+  };
+  declare type KinesisAnalytics$20150814$ApplicationStatus = 'DELETING' | 'STARTING' | 'STOPPING' | 'READY' | 'RUNNING' | 'UPDATING';
+  declare type KinesisAnalytics$20150814$ApplicationSummaries = KinesisAnalytics$20150814$ApplicationSummary[];
+  declare type KinesisAnalytics$20150814$ApplicationSummary = {
+    ApplicationName: string;
+    ApplicationARN: string;
+    ApplicationStatus: 'DELETING' | 'STARTING' | 'STOPPING' | 'READY' | 'RUNNING' | 'UPDATING';
+  };
+  declare type KinesisAnalytics$20150814$ApplicationUpdate = {
+    InputUpdates?: KinesisAnalytics$20150814$InputUpdates;
+    ApplicationCodeUpdate?: string;
+    OutputUpdates?: KinesisAnalytics$20150814$OutputUpdates;
+    ReferenceDataSourceUpdates?: KinesisAnalytics$20150814$ReferenceDataSourceUpdates;
+  };
+  declare type KinesisAnalytics$20150814$CSVMappingParameters = {
+    RecordRowDelimiter: string;
+    RecordColumnDelimiter: string;
+  };
+  declare type KinesisAnalytics$20150814$CodeValidationException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$ConcurrentModificationException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$CreateApplicationRequest = {
+    ApplicationName: string;
+    ApplicationDescription?: string;
+    Inputs?: KinesisAnalytics$20150814$Inputs;
+    Outputs?: KinesisAnalytics$20150814$Outputs;
+    ApplicationCode?: string;
+  };
+  declare type KinesisAnalytics$20150814$CreateApplicationResponse = {
+    ApplicationSummary: KinesisAnalytics$20150814$ApplicationSummary;
+  };
+  declare type KinesisAnalytics$20150814$DeleteApplicationOutputRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    OutputId: string;
+  };
+  declare type KinesisAnalytics$20150814$DeleteApplicationOutputResponse = {};
+  declare type KinesisAnalytics$20150814$DeleteApplicationReferenceDataSourceRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    ReferenceId: string;
+  };
+  declare type KinesisAnalytics$20150814$DeleteApplicationReferenceDataSourceResponse = {};
+  declare type KinesisAnalytics$20150814$DeleteApplicationRequest = {
+    ApplicationName: string;
+    CreateTimestamp: Date;
+  };
+  declare type KinesisAnalytics$20150814$DeleteApplicationResponse = {};
+  declare type KinesisAnalytics$20150814$DescribeApplicationRequest = {
+    ApplicationName: string;
+  };
+  declare type KinesisAnalytics$20150814$DescribeApplicationResponse = {
+    ApplicationDetail: KinesisAnalytics$20150814$ApplicationDetail;
+  };
+  declare type KinesisAnalytics$20150814$DestinationSchema = {
+    RecordFormatType?: 'JSON' | 'CSV';
+  };
+  declare type KinesisAnalytics$20150814$DiscoverInputSchemaRequest = {
+    ResourceARN: string;
+    RoleARN: string;
+    InputStartingPositionConfiguration: KinesisAnalytics$20150814$InputStartingPositionConfiguration;
+  };
+  declare type KinesisAnalytics$20150814$DiscoverInputSchemaResponse = {
+    InputSchema?: KinesisAnalytics$20150814$SourceSchema;
+    ParsedInputRecords?: KinesisAnalytics$20150814$ParsedInputRecords;
+    RawInputRecords?: KinesisAnalytics$20150814$RawInputRecords;
+  };
+  declare type KinesisAnalytics$20150814$InAppStreamNames = string[];
+  declare type KinesisAnalytics$20150814$Input = {
+    NamePrefix: string;
+    KinesisStreamsInput?: KinesisAnalytics$20150814$KinesisStreamsInput;
+    KinesisFirehoseInput?: KinesisAnalytics$20150814$KinesisFirehoseInput;
+    InputParallelism?: KinesisAnalytics$20150814$InputParallelism;
+    InputSchema?: KinesisAnalytics$20150814$SourceSchema;
+  };
+  declare type KinesisAnalytics$20150814$InputConfiguration = {
+    Id: string;
+    InputStartingPositionConfiguration: KinesisAnalytics$20150814$InputStartingPositionConfiguration;
+  };
+  declare type KinesisAnalytics$20150814$InputConfigurations = KinesisAnalytics$20150814$InputConfiguration[];
+  declare type KinesisAnalytics$20150814$InputDescription = {
+    InputId?: string;
+    NamePrefix?: string;
+    InAppStreamNames?: KinesisAnalytics$20150814$InAppStreamNames;
+    KinesisStreamsInputDescription?: KinesisAnalytics$20150814$KinesisStreamsInputDescription;
+    KinesisFirehoseInputDescription?: KinesisAnalytics$20150814$KinesisFirehoseInputDescription;
+    InputSchema?: KinesisAnalytics$20150814$SourceSchema;
+    InputParallelism?: KinesisAnalytics$20150814$InputParallelism;
+    InputStartingPositionConfiguration?: KinesisAnalytics$20150814$InputStartingPositionConfiguration;
+  };
+  declare type KinesisAnalytics$20150814$InputDescriptions = KinesisAnalytics$20150814$InputDescription[];
+  declare type KinesisAnalytics$20150814$InputParallelism = {
+    Count?: number;
+  };
+  declare type KinesisAnalytics$20150814$InputParallelismUpdate = {
+    CountUpdate?: number;
+  };
+  declare type KinesisAnalytics$20150814$InputSchemaUpdate = {
+    RecordFormatUpdate?: KinesisAnalytics$20150814$RecordFormat;
+    RecordEncodingUpdate?: string;
+    RecordColumnUpdates?: KinesisAnalytics$20150814$RecordColumns;
+  };
+  declare type KinesisAnalytics$20150814$InputStartingPosition = 'NOW' | 'TRIM_HORIZON' | 'LAST_STOPPED_POINT';
+  declare type KinesisAnalytics$20150814$InputStartingPositionConfiguration = {
+    InputStartingPosition?: 'NOW' | 'TRIM_HORIZON' | 'LAST_STOPPED_POINT';
+  };
+  declare type KinesisAnalytics$20150814$InputUpdate = {
+    InputId: string;
+    NamePrefixUpdate?: string;
+    KinesisStreamsInputUpdate?: KinesisAnalytics$20150814$KinesisStreamsInputUpdate;
+    KinesisFirehoseInputUpdate?: KinesisAnalytics$20150814$KinesisFirehoseInputUpdate;
+    InputSchemaUpdate?: KinesisAnalytics$20150814$InputSchemaUpdate;
+    InputParallelismUpdate?: KinesisAnalytics$20150814$InputParallelismUpdate;
+  };
+  declare type KinesisAnalytics$20150814$InputUpdates = KinesisAnalytics$20150814$InputUpdate[];
+  declare type KinesisAnalytics$20150814$Inputs = KinesisAnalytics$20150814$Input[];
+  declare type KinesisAnalytics$20150814$InvalidApplicationConfigurationException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$InvalidArgumentException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$JSONMappingParameters = {
+    RecordRowPath: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseInput = {
+    ResourceARN: string;
+    RoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseInputDescription = {
+    ResourceARN?: string;
+    RoleARN?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseInputUpdate = {
+    ResourceARNUpdate?: string;
+    RoleARNUpdate?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseOutput = {
+    ResourceARN: string;
+    RoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseOutputDescription = {
+    ResourceARN?: string;
+    RoleARN?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisFirehoseOutputUpdate = {
+    ResourceARNUpdate?: string;
+    RoleARNUpdate?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsInput = {
+    ResourceARN: string;
+    RoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsInputDescription = {
+    ResourceARN?: string;
+    RoleARN?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsInputUpdate = {
+    ResourceARNUpdate?: string;
+    RoleARNUpdate?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsOutput = {
+    ResourceARN: string;
+    RoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsOutputDescription = {
+    ResourceARN?: string;
+    RoleARN?: string;
+  };
+  declare type KinesisAnalytics$20150814$KinesisStreamsOutputUpdate = {
+    ResourceARNUpdate?: string;
+    RoleARNUpdate?: string;
+  };
+  declare type KinesisAnalytics$20150814$LimitExceededException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$ListApplicationsRequest = {
+    Limit?: number;
+    ExclusiveStartApplicationName?: string;
+  };
+  declare type KinesisAnalytics$20150814$ListApplicationsResponse = {
+    ApplicationSummaries: KinesisAnalytics$20150814$ApplicationSummaries;
+    HasMoreApplications: boolean;
+  };
+  declare type KinesisAnalytics$20150814$MappingParameters = {
+    JSONMappingParameters?: KinesisAnalytics$20150814$JSONMappingParameters;
+    CSVMappingParameters?: KinesisAnalytics$20150814$CSVMappingParameters;
+  };
+  declare type KinesisAnalytics$20150814$Output = {
+    Name: string;
+    KinesisStreamsOutput?: KinesisAnalytics$20150814$KinesisStreamsOutput;
+    KinesisFirehoseOutput?: KinesisAnalytics$20150814$KinesisFirehoseOutput;
+    DestinationSchema: KinesisAnalytics$20150814$DestinationSchema;
+  };
+  declare type KinesisAnalytics$20150814$OutputDescription = {
+    OutputId?: string;
+    Name?: string;
+    KinesisStreamsOutputDescription?: KinesisAnalytics$20150814$KinesisStreamsOutputDescription;
+    KinesisFirehoseOutputDescription?: KinesisAnalytics$20150814$KinesisFirehoseOutputDescription;
+    DestinationSchema?: KinesisAnalytics$20150814$DestinationSchema;
+  };
+  declare type KinesisAnalytics$20150814$OutputDescriptions = KinesisAnalytics$20150814$OutputDescription[];
+  declare type KinesisAnalytics$20150814$OutputUpdate = {
+    OutputId: string;
+    NameUpdate?: string;
+    KinesisStreamsOutputUpdate?: KinesisAnalytics$20150814$KinesisStreamsOutputUpdate;
+    KinesisFirehoseOutputUpdate?: KinesisAnalytics$20150814$KinesisFirehoseOutputUpdate;
+    DestinationSchemaUpdate?: KinesisAnalytics$20150814$DestinationSchema;
+  };
+  declare type KinesisAnalytics$20150814$OutputUpdates = KinesisAnalytics$20150814$OutputUpdate[];
+  declare type KinesisAnalytics$20150814$Outputs = KinesisAnalytics$20150814$Output[];
+  declare type KinesisAnalytics$20150814$ParsedInputRecord = string[];
+  declare type KinesisAnalytics$20150814$ParsedInputRecords = KinesisAnalytics$20150814$ParsedInputRecord[];
+  declare type KinesisAnalytics$20150814$RawInputRecords = string[];
+  declare type KinesisAnalytics$20150814$RecordColumn = {
+    Name: string;
+    Mapping?: string;
+    SqlType: string;
+  };
+  declare type KinesisAnalytics$20150814$RecordColumns = KinesisAnalytics$20150814$RecordColumn[];
+  declare type KinesisAnalytics$20150814$RecordFormat = {
+    RecordFormatType: 'JSON' | 'CSV';
+    MappingParameters?: KinesisAnalytics$20150814$MappingParameters;
+  };
+  declare type KinesisAnalytics$20150814$RecordFormatType = 'JSON' | 'CSV';
+  declare type KinesisAnalytics$20150814$ReferenceDataSource = {
+    TableName: string;
+    S3ReferenceDataSource?: KinesisAnalytics$20150814$S3ReferenceDataSource;
+    ReferenceSchema: KinesisAnalytics$20150814$SourceSchema;
+  };
+  declare type KinesisAnalytics$20150814$ReferenceDataSourceDescription = {
+    ReferenceId: string;
+    TableName: string;
+    S3ReferenceDataSourceDescription: KinesisAnalytics$20150814$S3ReferenceDataSourceDescription;
+    ReferenceSchema?: KinesisAnalytics$20150814$SourceSchema;
+  };
+  declare type KinesisAnalytics$20150814$ReferenceDataSourceDescriptions = KinesisAnalytics$20150814$ReferenceDataSourceDescription[];
+  declare type KinesisAnalytics$20150814$ReferenceDataSourceUpdate = {
+    ReferenceId: string;
+    TableNameUpdate?: string;
+    S3ReferenceDataSourceUpdate?: KinesisAnalytics$20150814$S3ReferenceDataSourceUpdate;
+    ReferenceSchemaUpdate?: KinesisAnalytics$20150814$SourceSchema;
+  };
+  declare type KinesisAnalytics$20150814$ReferenceDataSourceUpdates = KinesisAnalytics$20150814$ReferenceDataSourceUpdate[];
+  declare type KinesisAnalytics$20150814$ResourceInUseException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$ResourceNotFoundException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$ResourceProvisionedThroughputExceededException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$S3ReferenceDataSource = {
+    BucketARN: string;
+    FileKey: string;
+    ReferenceRoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$S3ReferenceDataSourceDescription = {
+    BucketARN: string;
+    FileKey: string;
+    ReferenceRoleARN: string;
+  };
+  declare type KinesisAnalytics$20150814$S3ReferenceDataSourceUpdate = {
+    BucketARNUpdate?: string;
+    FileKeyUpdate?: string;
+    ReferenceRoleARNUpdate?: string;
+  };
+  declare type KinesisAnalytics$20150814$SourceSchema = {
+    RecordFormat: KinesisAnalytics$20150814$RecordFormat;
+    RecordEncoding?: string;
+    RecordColumns: KinesisAnalytics$20150814$RecordColumns;
+  };
+  declare type KinesisAnalytics$20150814$StartApplicationRequest = {
+    ApplicationName: string;
+    InputConfigurations: KinesisAnalytics$20150814$InputConfigurations;
+  };
+  declare type KinesisAnalytics$20150814$StartApplicationResponse = {};
+  declare type KinesisAnalytics$20150814$StopApplicationRequest = {
+    ApplicationName: string;
+  };
+  declare type KinesisAnalytics$20150814$StopApplicationResponse = {};
+  declare type KinesisAnalytics$20150814$Timestamp = Date;
+  declare type KinesisAnalytics$20150814$UnableToDetectSchemaException = {
+    message?: string;
+  };
+  declare type KinesisAnalytics$20150814$UpdateApplicationRequest = {
+    ApplicationName: string;
+    CurrentApplicationVersionId: number;
+    ApplicationUpdate: KinesisAnalytics$20150814$ApplicationUpdate;
+  };
+  declare type KinesisAnalytics$20150814$UpdateApplicationResponse = {};
+  declare type KMS$20141101$AlgorithmSpec = 'RSAES_PKCS1_V1_5' | 'RSAES_OAEP_SHA_1' | 'RSAES_OAEP_SHA_256';
   declare type KMS$20141101$AliasList = KMS$20141101$AliasListEntry[];
   declare type KMS$20141101$AliasListEntry = {
     AliasName?: string;
@@ -21198,6 +22020,7 @@ declare module 'aws-sdk' {
     Policy?: string;
     Description?: string;
     KeyUsage?: 'ENCRYPT_DECRYPT';
+    Origin?: 'AWS_KMS' | 'EXTERNAL';
     BypassPolicyLockoutSafetyCheck?: boolean;
   };
   declare type KMS$20141101$CreateKeyResponse = {
@@ -21218,6 +22041,9 @@ declare module 'aws-sdk' {
   };
   declare type KMS$20141101$DeleteAliasRequest = {
     AliasName: string;
+  };
+  declare type KMS$20141101$DeleteImportedKeyMaterialRequest = {
+    KeyId: string;
   };
   declare type KMS$20141101$DependencyTimeoutException = {
     message?: string;
@@ -21258,6 +22084,10 @@ declare module 'aws-sdk' {
   };
   declare type KMS$20141101$EncryptionContextType = {
     [key: string]: string;
+  };
+  declare type KMS$20141101$ExpirationModelType = 'KEY_MATERIAL_EXPIRES' | 'KEY_MATERIAL_DOES_NOT_EXPIRE';
+  declare type KMS$20141101$ExpiredImportTokenException = {
+    message?: string;
   };
   declare type KMS$20141101$GenerateDataKeyRequest = {
     KeyId: string;
@@ -21305,6 +22135,17 @@ declare module 'aws-sdk' {
   declare type KMS$20141101$GetKeyRotationStatusResponse = {
     KeyRotationEnabled?: boolean;
   };
+  declare type KMS$20141101$GetParametersForImportRequest = {
+    KeyId: string;
+    WrappingAlgorithm: 'RSAES_PKCS1_V1_5' | 'RSAES_OAEP_SHA_1' | 'RSAES_OAEP_SHA_256';
+    WrappingKeySpec: 'RSA_2048';
+  };
+  declare type KMS$20141101$GetParametersForImportResponse = {
+    KeyId?: string;
+    ImportToken?: Buffer | $TypedArray | Blob | string;
+    PublicKey?: Buffer | $TypedArray | Blob | string;
+    ParametersValidTo?: Date;
+  };
   declare type KMS$20141101$GrantConstraints = {
     EncryptionContextSubset?: {
       [key: string]: string;
@@ -21328,6 +22169,17 @@ declare module 'aws-sdk' {
   declare type KMS$20141101$GrantOperation = 'Decrypt' | 'Encrypt' | 'GenerateDataKey' | 'GenerateDataKeyWithoutPlaintext' | 'ReEncryptFrom' | 'ReEncryptTo' | 'CreateGrant' | 'RetireGrant' | 'DescribeKey';
   declare type KMS$20141101$GrantOperationList = ('Decrypt' | 'Encrypt' | 'GenerateDataKey' | 'GenerateDataKeyWithoutPlaintext' | 'ReEncryptFrom' | 'ReEncryptTo' | 'CreateGrant' | 'RetireGrant' | 'DescribeKey')[];
   declare type KMS$20141101$GrantTokenList = string[];
+  declare type KMS$20141101$ImportKeyMaterialRequest = {
+    KeyId: string;
+    ImportToken: Buffer | $TypedArray | Blob | string;
+    EncryptedKeyMaterial: Buffer | $TypedArray | Blob | string;
+    ValidTo: Date;
+    ExpirationModel?: 'KEY_MATERIAL_EXPIRES' | 'KEY_MATERIAL_DOES_NOT_EXPIRE';
+  };
+  declare type KMS$20141101$ImportKeyMaterialResponse = {};
+  declare type KMS$20141101$IncorrectKeyMaterialException = {
+    message?: string;
+  };
   declare type KMS$20141101$InvalidAliasNameException = {
     message?: string;
   };
@@ -21341,6 +22193,9 @@ declare module 'aws-sdk' {
     message?: string;
   };
   declare type KMS$20141101$InvalidGrantTokenException = {
+    message?: string;
+  };
+  declare type KMS$20141101$InvalidImportTokenException = {
     message?: string;
   };
   declare type KMS$20141101$InvalidKeyUsageException = {
@@ -21368,10 +22223,13 @@ declare module 'aws-sdk' {
     Enabled?: boolean;
     Description?: string;
     KeyUsage?: 'ENCRYPT_DECRYPT';
-    KeyState?: 'Enabled' | 'Disabled' | 'PendingDeletion';
+    KeyState?: 'Enabled' | 'Disabled' | 'PendingDeletion' | 'PendingImport';
     DeletionDate?: Date;
+    ValidTo?: Date;
+    Origin?: 'AWS_KMS' | 'EXTERNAL';
+    ExpirationModel?: 'KEY_MATERIAL_EXPIRES' | 'KEY_MATERIAL_DOES_NOT_EXPIRE';
   };
-  declare type KMS$20141101$KeyState = 'Enabled' | 'Disabled' | 'PendingDeletion';
+  declare type KMS$20141101$KeyState = 'Enabled' | 'Disabled' | 'PendingDeletion' | 'PendingImport';
   declare type KMS$20141101$KeyUnavailableException = {
     message?: string;
   };
@@ -21428,6 +22286,7 @@ declare module 'aws-sdk' {
   declare type KMS$20141101$NotFoundException = {
     message?: string;
   };
+  declare type KMS$20141101$OriginType = 'AWS_KMS' | 'EXTERNAL';
   declare type KMS$20141101$PlaintextType = Buffer | $TypedArray | Blob | string;
   declare type KMS$20141101$PolicyNameList = string[];
   declare type KMS$20141101$PutKeyPolicyRequest = {
@@ -21480,6 +22339,7 @@ declare module 'aws-sdk' {
     KeyId: string;
     Description: string;
   };
+  declare type KMS$20141101$WrappingKeySpec = 'RSA_2048';
   declare type Lambda$20141111$AddEventSourceRequest = {
     EventSource: string;
     FunctionName: string;
@@ -22477,6 +23337,7 @@ declare module 'aws-sdk' {
   };
   declare type MarketplaceCommerceAnalytics$20150701$DataSetPublicationDate = Date;
   declare type MarketplaceCommerceAnalytics$20150701$DataSetType = 'customer_subscriber_hourly_monthly_subscriptions' | 'customer_subscriber_annual_subscriptions' | 'daily_business_usage_by_instance_type' | 'daily_business_fees' | 'daily_business_free_trial_conversions' | 'daily_business_new_instances' | 'daily_business_new_product_subscribers' | 'daily_business_canceled_product_subscribers' | 'monthly_revenue_billing_and_revenue_data' | 'monthly_revenue_annual_subscriptions' | 'disbursed_amount_by_product' | 'disbursed_amount_by_product_with_uncollected_funds' | 'disbursed_amount_by_customer_geo' | 'disbursed_amount_by_age_of_uncollected_funds' | 'disbursed_amount_by_age_of_disbursed_funds' | 'customer_profile_by_industry' | 'customer_profile_by_revenue' | 'customer_profile_by_geography';
+  declare type MarketplaceCommerceAnalytics$20150701$FromDate = Date;
   declare type MarketplaceCommerceAnalytics$20150701$GenerateDataSetRequest = {
     dataSetType: 'customer_subscriber_hourly_monthly_subscriptions' | 'customer_subscriber_annual_subscriptions' | 'daily_business_usage_by_instance_type' | 'daily_business_fees' | 'daily_business_free_trial_conversions' | 'daily_business_new_instances' | 'daily_business_new_product_subscribers' | 'daily_business_canceled_product_subscribers' | 'monthly_revenue_billing_and_revenue_data' | 'monthly_revenue_annual_subscriptions' | 'disbursed_amount_by_product' | 'disbursed_amount_by_product_with_uncollected_funds' | 'disbursed_amount_by_customer_geo' | 'disbursed_amount_by_age_of_uncollected_funds' | 'disbursed_amount_by_age_of_disbursed_funds' | 'customer_profile_by_industry' | 'customer_profile_by_revenue' | 'customer_profile_by_geography';
     dataSetPublicationDate: Date;
@@ -22494,6 +23355,21 @@ declare module 'aws-sdk' {
   declare type MarketplaceCommerceAnalytics$20150701$MarketplaceCommerceAnalyticsException = {
     message?: string;
   };
+  declare type MarketplaceCommerceAnalytics$20150701$StartSupportDataExportRequest = {
+    dataSetType: 'customer_support_contacts_data' | 'test_customer_support_contacts_data';
+    fromDate: Date;
+    roleNameArn: string;
+    destinationS3BucketName: string;
+    destinationS3Prefix?: string;
+    snsTopicArn: string;
+    customerDefinedValues?: {
+      [key: string]: string;
+    };
+  };
+  declare type MarketplaceCommerceAnalytics$20150701$StartSupportDataExportResult = {
+    dataSetRequestId?: string;
+  };
+  declare type MarketplaceCommerceAnalytics$20150701$SupportDataSetType = 'customer_support_contacts_data' | 'test_customer_support_contacts_data';
   declare type MarketplaceMetering$20160114$DuplicateRequestException = {
     message?: string;
   };
@@ -31588,6 +32464,184 @@ declare module 'aws-sdk' {
     Value?: string;
     Exists?: boolean;
   };
+  declare type Snowball$20160630$Address = {
+    AddressId?: string;
+    Name?: string;
+    Company?: string;
+    Street1?: string;
+    Street2?: string;
+    Street3?: string;
+    City?: string;
+    StateOrProvince?: string;
+    PrefectureOrDistrict?: string;
+    Landmark?: string;
+    Country?: string;
+    PostalCode?: string;
+    PhoneNumber?: string;
+  };
+  declare type Snowball$20160630$AddressList = Snowball$20160630$Address[];
+  declare type Snowball$20160630$CancelJobRequest = {
+    JobId: string;
+  };
+  declare type Snowball$20160630$CancelJobResult = {};
+  declare type Snowball$20160630$CreateAddressRequest = {
+    Address: Snowball$20160630$Address;
+  };
+  declare type Snowball$20160630$CreateAddressResult = {
+    AddressId?: string;
+  };
+  declare type Snowball$20160630$CreateJobRequest = {
+    JobType: 'IMPORT' | 'EXPORT';
+    Resources: Snowball$20160630$JobResource;
+    Description?: string;
+    AddressId: string;
+    KmsKeyARN?: string;
+    RoleARN: string;
+    SnowballCapacityPreference?: 'T50' | 'T80' | 'NoPreference';
+    ShippingOption: 'SECOND_DAY' | 'NEXT_DAY' | 'EXPRESS' | 'STANDARD';
+    Notification?: Snowball$20160630$Notification;
+  };
+  declare type Snowball$20160630$CreateJobResult = {
+    JobId?: string;
+  };
+  declare type Snowball$20160630$DataTransfer = {
+    BytesTransferred?: number;
+    ObjectsTransferred?: number;
+    TotalBytes?: number;
+    TotalObjects?: number;
+  };
+  declare type Snowball$20160630$DescribeAddressRequest = {
+    AddressId: string;
+  };
+  declare type Snowball$20160630$DescribeAddressResult = {
+    Address?: Snowball$20160630$Address;
+  };
+  declare type Snowball$20160630$DescribeAddressesRequest = {
+    MaxResults?: number;
+    NextToken?: string;
+  };
+  declare type Snowball$20160630$DescribeAddressesResult = {
+    Addresses?: Snowball$20160630$AddressList;
+    NextToken?: string;
+  };
+  declare type Snowball$20160630$DescribeJobRequest = {
+    JobId: string;
+  };
+  declare type Snowball$20160630$DescribeJobResult = {
+    JobMetadata?: Snowball$20160630$JobMetadata;
+    SubJobMetadata?: Snowball$20160630$JobMetadataList;
+  };
+  declare type Snowball$20160630$GetJobManifestRequest = {
+    JobId: string;
+  };
+  declare type Snowball$20160630$GetJobManifestResult = {
+    ManifestURI?: string;
+  };
+  declare type Snowball$20160630$GetJobUnlockCodeRequest = {
+    JobId: string;
+  };
+  declare type Snowball$20160630$GetJobUnlockCodeResult = {
+    UnlockCode?: string;
+  };
+  declare type Snowball$20160630$GetSnowballUsageRequest = {};
+  declare type Snowball$20160630$GetSnowballUsageResult = {
+    SnowballLimit?: number;
+    SnowballsInUse?: number;
+  };
+  declare type Snowball$20160630$InvalidAddressException = {
+    Message?: string;
+  };
+  declare type Snowball$20160630$InvalidJobStateException = {
+    Message?: string;
+  };
+  declare type Snowball$20160630$InvalidResourceException = {
+    Message?: string;
+  };
+  declare type Snowball$20160630$JobListEntry = {
+    JobId?: string;
+    JobState?: 'New' | 'PreparingAppliance' | 'PreparingShipment' | 'InTransitToCustomer' | 'WithCustomer' | 'InTransitToAWS' | 'WithAWS' | 'InProgress' | 'Complete' | 'Cancelled' | 'Listing' | 'Pending';
+    IsMaster?: boolean;
+  };
+  declare type Snowball$20160630$JobListEntryList = Snowball$20160630$JobListEntry[];
+  declare type Snowball$20160630$JobLogs = {
+    JobCompletionReportURI?: string;
+    JobSuccessLogURI?: string;
+    JobFailureLogURI?: string;
+  };
+  declare type Snowball$20160630$JobMetadata = {
+    JobId?: string;
+    JobState?: 'New' | 'PreparingAppliance' | 'PreparingShipment' | 'InTransitToCustomer' | 'WithCustomer' | 'InTransitToAWS' | 'WithAWS' | 'InProgress' | 'Complete' | 'Cancelled' | 'Listing' | 'Pending';
+    JobType?: 'IMPORT' | 'EXPORT';
+    CreationDate?: Date;
+    Resources?: Snowball$20160630$JobResource;
+    Description?: string;
+    KmsKeyARN?: string;
+    RoleARN?: string;
+    AddressId?: string;
+    ShippingDetails?: Snowball$20160630$ShippingDetails;
+    SnowballCapacityPreference?: 'T50' | 'T80' | 'NoPreference';
+    Notification?: Snowball$20160630$Notification;
+    DataTransferProgress?: Snowball$20160630$DataTransfer;
+    JobLogInfo?: Snowball$20160630$JobLogs;
+  };
+  declare type Snowball$20160630$JobMetadataList = Snowball$20160630$JobMetadata[];
+  declare type Snowball$20160630$JobResource = {
+    S3Resources?: Snowball$20160630$S3ResourceList;
+  };
+  declare type Snowball$20160630$JobState = 'New' | 'PreparingAppliance' | 'PreparingShipment' | 'InTransitToCustomer' | 'WithCustomer' | 'InTransitToAWS' | 'WithAWS' | 'InProgress' | 'Complete' | 'Cancelled' | 'Listing' | 'Pending';
+  declare type Snowball$20160630$JobStateList = ('New' | 'PreparingAppliance' | 'PreparingShipment' | 'InTransitToCustomer' | 'WithCustomer' | 'InTransitToAWS' | 'WithAWS' | 'InProgress' | 'Complete' | 'Cancelled' | 'Listing' | 'Pending')[];
+  declare type Snowball$20160630$JobType = 'IMPORT' | 'EXPORT';
+  declare type Snowball$20160630$KMSRequestFailedException = {
+    Message?: string;
+  };
+  declare type Snowball$20160630$KeyRange = {
+    BeginMarker?: string;
+    EndMarker?: string;
+  };
+  declare type Snowball$20160630$ListJobsRequest = {
+    MaxResults?: number;
+    NextToken?: string;
+  };
+  declare type Snowball$20160630$ListJobsResult = {
+    JobListEntries?: Snowball$20160630$JobListEntryList;
+    NextToken?: string;
+  };
+  declare type Snowball$20160630$Notification = {
+    SnsTopicARN?: string;
+    JobStatesToNotify?: Snowball$20160630$JobStateList;
+    NotifyAll?: boolean;
+  };
+  declare type Snowball$20160630$S3Resource = {
+    BucketArn?: string;
+    KeyRange?: Snowball$20160630$KeyRange;
+  };
+  declare type Snowball$20160630$S3ResourceList = Snowball$20160630$S3Resource[];
+  declare type Snowball$20160630$Shipment = {
+    Status?: string;
+    TrackingNumber?: string;
+  };
+  declare type Snowball$20160630$ShippingDetails = {
+    ShippingOption?: 'SECOND_DAY' | 'NEXT_DAY' | 'EXPRESS' | 'STANDARD';
+    InboundShipment?: Snowball$20160630$Shipment;
+    OutboundShipment?: Snowball$20160630$Shipment;
+  };
+  declare type Snowball$20160630$ShippingOption = 'SECOND_DAY' | 'NEXT_DAY' | 'EXPRESS' | 'STANDARD';
+  declare type Snowball$20160630$SnowballCapacity = 'T50' | 'T80' | 'NoPreference';
+  declare type Snowball$20160630$Timestamp = Date;
+  declare type Snowball$20160630$UnsupportedAddressException = {
+    Message?: string;
+  };
+  declare type Snowball$20160630$UpdateJobRequest = {
+    JobId: string;
+    RoleARN?: string;
+    Notification?: Snowball$20160630$Notification;
+    Resources?: Snowball$20160630$JobResource;
+    AddressId?: string;
+    ShippingOption?: 'SECOND_DAY' | 'NEXT_DAY' | 'EXPRESS' | 'STANDARD';
+    Description?: string;
+    SnowballCapacityPreference?: 'T50' | 'T80' | 'NoPreference';
+  };
+  declare type Snowball$20160630$UpdateJobResult = {};
   declare type SNS$20100331$ActionsList = string[];
   declare type SNS$20100331$AddPermissionInput = {
     TopicArn: string;
@@ -35242,6 +36296,7 @@ declare module 'aws-sdk' {
   }
   declare class AutoScaling$20110101 {
     attachInstances: $APIMethod<AutoScaling$20110101$AttachInstancesQuery, void>;
+    attachLoadBalancerTargetGroups: $APIMethod<AutoScaling$20110101$AttachLoadBalancerTargetGroupsType, AutoScaling$20110101$AttachLoadBalancerTargetGroupsResultType>;
     attachLoadBalancers: $APIMethod<AutoScaling$20110101$AttachLoadBalancersType, AutoScaling$20110101$AttachLoadBalancersResultType>;
     completeLifecycleAction: $APIMethod<AutoScaling$20110101$CompleteLifecycleActionType, AutoScaling$20110101$CompleteLifecycleActionAnswer>;
     createAutoScalingGroup: $APIMethod<AutoScaling$20110101$CreateAutoScalingGroupType, void>;
@@ -35262,6 +36317,7 @@ declare module 'aws-sdk' {
     describeLaunchConfigurations: $APIMethod<AutoScaling$20110101$LaunchConfigurationNamesType, AutoScaling$20110101$LaunchConfigurationsType>;
     describeLifecycleHookTypes: $APIMethod<void, AutoScaling$20110101$DescribeLifecycleHookTypesAnswer>;
     describeLifecycleHooks: $APIMethod<AutoScaling$20110101$DescribeLifecycleHooksType, AutoScaling$20110101$DescribeLifecycleHooksAnswer>;
+    describeLoadBalancerTargetGroups: $APIMethod<AutoScaling$20110101$DescribeLoadBalancerTargetGroupsRequest, AutoScaling$20110101$DescribeLoadBalancerTargetGroupsResponse>;
     describeLoadBalancers: $APIMethod<AutoScaling$20110101$DescribeLoadBalancersRequest, AutoScaling$20110101$DescribeLoadBalancersResponse>;
     describeMetricCollectionTypes: $APIMethod<void, AutoScaling$20110101$DescribeMetricCollectionTypesAnswer>;
     describeNotificationConfigurations: $APIMethod<AutoScaling$20110101$DescribeNotificationConfigurationsType, AutoScaling$20110101$DescribeNotificationConfigurationsAnswer>;
@@ -35272,6 +36328,7 @@ declare module 'aws-sdk' {
     describeTags: $APIMethod<AutoScaling$20110101$DescribeTagsType, AutoScaling$20110101$TagsType>;
     describeTerminationPolicyTypes: $APIMethod<void, AutoScaling$20110101$DescribeTerminationPolicyTypesAnswer>;
     detachInstances: $APIMethod<AutoScaling$20110101$DetachInstancesQuery, AutoScaling$20110101$DetachInstancesAnswer>;
+    detachLoadBalancerTargetGroups: $APIMethod<AutoScaling$20110101$DetachLoadBalancerTargetGroupsType, AutoScaling$20110101$DetachLoadBalancerTargetGroupsResultType>;
     detachLoadBalancers: $APIMethod<AutoScaling$20110101$DetachLoadBalancersType, AutoScaling$20110101$DetachLoadBalancersResultType>;
     disableMetricsCollection: $APIMethod<AutoScaling$20110101$DisableMetricsCollectionQuery, void>;
     enableMetricsCollection: $APIMethod<AutoScaling$20110101$EnableMetricsCollectionQuery, void>;
@@ -35329,35 +36386,40 @@ declare module 'aws-sdk' {
     }): CloudFormation$20100515;
     constructor(): CloudFormation$20100515;
   }
-  declare class CloudFront$20160128 {
-    createCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160128$CreateCloudFrontOriginAccessIdentityRequest, CloudFront$20160128$CreateCloudFrontOriginAccessIdentityResult>;
-    createDistribution: $APIMethod<CloudFront$20160128$CreateDistributionRequest, CloudFront$20160128$CreateDistributionResult>;
-    createInvalidation: $APIMethod<CloudFront$20160128$CreateInvalidationRequest, CloudFront$20160128$CreateInvalidationResult>;
-    createStreamingDistribution: $APIMethod<CloudFront$20160128$CreateStreamingDistributionRequest, CloudFront$20160128$CreateStreamingDistributionResult>;
-    deleteCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160128$DeleteCloudFrontOriginAccessIdentityRequest, void>;
-    deleteDistribution: $APIMethod<CloudFront$20160128$DeleteDistributionRequest, void>;
-    deleteStreamingDistribution: $APIMethod<CloudFront$20160128$DeleteStreamingDistributionRequest, void>;
-    getCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160128$GetCloudFrontOriginAccessIdentityRequest, CloudFront$20160128$GetCloudFrontOriginAccessIdentityResult>;
-    getCloudFrontOriginAccessIdentityConfig: $APIMethod<CloudFront$20160128$GetCloudFrontOriginAccessIdentityConfigRequest, CloudFront$20160128$GetCloudFrontOriginAccessIdentityConfigResult>;
-    getDistribution: $APIMethod<CloudFront$20160128$GetDistributionRequest, CloudFront$20160128$GetDistributionResult>;
-    getDistributionConfig: $APIMethod<CloudFront$20160128$GetDistributionConfigRequest, CloudFront$20160128$GetDistributionConfigResult>;
-    getInvalidation: $APIMethod<CloudFront$20160128$GetInvalidationRequest, CloudFront$20160128$GetInvalidationResult>;
-    getStreamingDistribution: $APIMethod<CloudFront$20160128$GetStreamingDistributionRequest, CloudFront$20160128$GetStreamingDistributionResult>;
-    getStreamingDistributionConfig: $APIMethod<CloudFront$20160128$GetStreamingDistributionConfigRequest, CloudFront$20160128$GetStreamingDistributionConfigResult>;
-    listCloudFrontOriginAccessIdentities: $APIMethod<CloudFront$20160128$ListCloudFrontOriginAccessIdentitiesRequest, CloudFront$20160128$ListCloudFrontOriginAccessIdentitiesResult>;
-    listDistributions: $APIMethod<CloudFront$20160128$ListDistributionsRequest, CloudFront$20160128$ListDistributionsResult>;
-    listDistributionsByWebACLId: $APIMethod<CloudFront$20160128$ListDistributionsByWebACLIdRequest, CloudFront$20160128$ListDistributionsByWebACLIdResult>;
-    listInvalidations: $APIMethod<CloudFront$20160128$ListInvalidationsRequest, CloudFront$20160128$ListInvalidationsResult>;
-    listStreamingDistributions: $APIMethod<CloudFront$20160128$ListStreamingDistributionsRequest, CloudFront$20160128$ListStreamingDistributionsResult>;
-    updateCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160128$UpdateCloudFrontOriginAccessIdentityRequest, CloudFront$20160128$UpdateCloudFrontOriginAccessIdentityResult>;
-    updateDistribution: $APIMethod<CloudFront$20160128$UpdateDistributionRequest, CloudFront$20160128$UpdateDistributionResult>;
-    updateStreamingDistribution: $APIMethod<CloudFront$20160128$UpdateStreamingDistributionRequest, CloudFront$20160128$UpdateStreamingDistributionResult>;
+  declare class CloudFront$20160801 {
+    createCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160801$CreateCloudFrontOriginAccessIdentityRequest, CloudFront$20160801$CreateCloudFrontOriginAccessIdentityResult>;
+    createDistribution: $APIMethod<CloudFront$20160801$CreateDistributionRequest, CloudFront$20160801$CreateDistributionResult>;
+    createDistributionWithTags: $APIMethod<CloudFront$20160801$CreateDistributionWithTagsRequest, CloudFront$20160801$CreateDistributionWithTagsResult>;
+    createInvalidation: $APIMethod<CloudFront$20160801$CreateInvalidationRequest, CloudFront$20160801$CreateInvalidationResult>;
+    createStreamingDistribution: $APIMethod<CloudFront$20160801$CreateStreamingDistributionRequest, CloudFront$20160801$CreateStreamingDistributionResult>;
+    createStreamingDistributionWithTags: $APIMethod<CloudFront$20160801$CreateStreamingDistributionWithTagsRequest, CloudFront$20160801$CreateStreamingDistributionWithTagsResult>;
+    deleteCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160801$DeleteCloudFrontOriginAccessIdentityRequest, void>;
+    deleteDistribution: $APIMethod<CloudFront$20160801$DeleteDistributionRequest, void>;
+    deleteStreamingDistribution: $APIMethod<CloudFront$20160801$DeleteStreamingDistributionRequest, void>;
+    getCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160801$GetCloudFrontOriginAccessIdentityRequest, CloudFront$20160801$GetCloudFrontOriginAccessIdentityResult>;
+    getCloudFrontOriginAccessIdentityConfig: $APIMethod<CloudFront$20160801$GetCloudFrontOriginAccessIdentityConfigRequest, CloudFront$20160801$GetCloudFrontOriginAccessIdentityConfigResult>;
+    getDistribution: $APIMethod<CloudFront$20160801$GetDistributionRequest, CloudFront$20160801$GetDistributionResult>;
+    getDistributionConfig: $APIMethod<CloudFront$20160801$GetDistributionConfigRequest, CloudFront$20160801$GetDistributionConfigResult>;
+    getInvalidation: $APIMethod<CloudFront$20160801$GetInvalidationRequest, CloudFront$20160801$GetInvalidationResult>;
+    getStreamingDistribution: $APIMethod<CloudFront$20160801$GetStreamingDistributionRequest, CloudFront$20160801$GetStreamingDistributionResult>;
+    getStreamingDistributionConfig: $APIMethod<CloudFront$20160801$GetStreamingDistributionConfigRequest, CloudFront$20160801$GetStreamingDistributionConfigResult>;
+    listCloudFrontOriginAccessIdentities: $APIMethod<CloudFront$20160801$ListCloudFrontOriginAccessIdentitiesRequest, CloudFront$20160801$ListCloudFrontOriginAccessIdentitiesResult>;
+    listDistributions: $APIMethod<CloudFront$20160801$ListDistributionsRequest, CloudFront$20160801$ListDistributionsResult>;
+    listDistributionsByWebACLId: $APIMethod<CloudFront$20160801$ListDistributionsByWebACLIdRequest, CloudFront$20160801$ListDistributionsByWebACLIdResult>;
+    listInvalidations: $APIMethod<CloudFront$20160801$ListInvalidationsRequest, CloudFront$20160801$ListInvalidationsResult>;
+    listStreamingDistributions: $APIMethod<CloudFront$20160801$ListStreamingDistributionsRequest, CloudFront$20160801$ListStreamingDistributionsResult>;
+    listTagsForResource: $APIMethod<CloudFront$20160801$ListTagsForResourceRequest, CloudFront$20160801$ListTagsForResourceResult>;
+    tagResource: $APIMethod<CloudFront$20160801$TagResourceRequest, void>;
+    untagResource: $APIMethod<CloudFront$20160801$UntagResourceRequest, void>;
+    updateCloudFrontOriginAccessIdentity: $APIMethod<CloudFront$20160801$UpdateCloudFrontOriginAccessIdentityRequest, CloudFront$20160801$UpdateCloudFrontOriginAccessIdentityResult>;
+    updateDistribution: $APIMethod<CloudFront$20160801$UpdateDistributionRequest, CloudFront$20160801$UpdateDistributionResult>;
+    updateStreamingDistribution: $APIMethod<CloudFront$20160801$UpdateStreamingDistributionRequest, CloudFront$20160801$UpdateStreamingDistributionResult>;
   }
   declare class CloudFront {
     constructor(config: $ConfigOptions & {
-      apiVersion: '2016-01-28';
-    }): CloudFront$20160128;
-    constructor(): CloudFront$20160128;
+      apiVersion: '2016-08-01';
+    }): CloudFront$20160801;
+    constructor(): CloudFront$20160801;
   }
   declare class CloudHSM$20140530 {
     addTagsToResource: $APIMethod<CloudHSM$20140530$AddTagsToResourceRequest, CloudHSM$20140530$AddTagsToResourceResponse>;
@@ -36468,6 +37530,43 @@ declare module 'aws-sdk' {
     }): ELB$20120601;
     constructor(): ELB$20120601;
   }
+  declare class ELBv2$20151201 {
+    addTags: $APIMethod<ELBv2$20151201$AddTagsInput, ELBv2$20151201$AddTagsOutput>;
+    createListener: $APIMethod<ELBv2$20151201$CreateListenerInput, ELBv2$20151201$CreateListenerOutput>;
+    createLoadBalancer: $APIMethod<ELBv2$20151201$CreateLoadBalancerInput, ELBv2$20151201$CreateLoadBalancerOutput>;
+    createRule: $APIMethod<ELBv2$20151201$CreateRuleInput, ELBv2$20151201$CreateRuleOutput>;
+    createTargetGroup: $APIMethod<ELBv2$20151201$CreateTargetGroupInput, ELBv2$20151201$CreateTargetGroupOutput>;
+    deleteListener: $APIMethod<ELBv2$20151201$DeleteListenerInput, ELBv2$20151201$DeleteListenerOutput>;
+    deleteLoadBalancer: $APIMethod<ELBv2$20151201$DeleteLoadBalancerInput, ELBv2$20151201$DeleteLoadBalancerOutput>;
+    deleteRule: $APIMethod<ELBv2$20151201$DeleteRuleInput, ELBv2$20151201$DeleteRuleOutput>;
+    deleteTargetGroup: $APIMethod<ELBv2$20151201$DeleteTargetGroupInput, ELBv2$20151201$DeleteTargetGroupOutput>;
+    deregisterTargets: $APIMethod<ELBv2$20151201$DeregisterTargetsInput, ELBv2$20151201$DeregisterTargetsOutput>;
+    describeListeners: $APIMethod<ELBv2$20151201$DescribeListenersInput, ELBv2$20151201$DescribeListenersOutput>;
+    describeLoadBalancerAttributes: $APIMethod<ELBv2$20151201$DescribeLoadBalancerAttributesInput, ELBv2$20151201$DescribeLoadBalancerAttributesOutput>;
+    describeLoadBalancers: $APIMethod<ELBv2$20151201$DescribeLoadBalancersInput, ELBv2$20151201$DescribeLoadBalancersOutput>;
+    describeRules: $APIMethod<ELBv2$20151201$DescribeRulesInput, ELBv2$20151201$DescribeRulesOutput>;
+    describeSSLPolicies: $APIMethod<ELBv2$20151201$DescribeSSLPoliciesInput, ELBv2$20151201$DescribeSSLPoliciesOutput>;
+    describeTags: $APIMethod<ELBv2$20151201$DescribeTagsInput, ELBv2$20151201$DescribeTagsOutput>;
+    describeTargetGroupAttributes: $APIMethod<ELBv2$20151201$DescribeTargetGroupAttributesInput, ELBv2$20151201$DescribeTargetGroupAttributesOutput>;
+    describeTargetGroups: $APIMethod<ELBv2$20151201$DescribeTargetGroupsInput, ELBv2$20151201$DescribeTargetGroupsOutput>;
+    describeTargetHealth: $APIMethod<ELBv2$20151201$DescribeTargetHealthInput, ELBv2$20151201$DescribeTargetHealthOutput>;
+    modifyListener: $APIMethod<ELBv2$20151201$ModifyListenerInput, ELBv2$20151201$ModifyListenerOutput>;
+    modifyLoadBalancerAttributes: $APIMethod<ELBv2$20151201$ModifyLoadBalancerAttributesInput, ELBv2$20151201$ModifyLoadBalancerAttributesOutput>;
+    modifyRule: $APIMethod<ELBv2$20151201$ModifyRuleInput, ELBv2$20151201$ModifyRuleOutput>;
+    modifyTargetGroup: $APIMethod<ELBv2$20151201$ModifyTargetGroupInput, ELBv2$20151201$ModifyTargetGroupOutput>;
+    modifyTargetGroupAttributes: $APIMethod<ELBv2$20151201$ModifyTargetGroupAttributesInput, ELBv2$20151201$ModifyTargetGroupAttributesOutput>;
+    registerTargets: $APIMethod<ELBv2$20151201$RegisterTargetsInput, ELBv2$20151201$RegisterTargetsOutput>;
+    removeTags: $APIMethod<ELBv2$20151201$RemoveTagsInput, ELBv2$20151201$RemoveTagsOutput>;
+    setRulePriorities: $APIMethod<ELBv2$20151201$SetRulePrioritiesInput, ELBv2$20151201$SetRulePrioritiesOutput>;
+    setSecurityGroups: $APIMethod<ELBv2$20151201$SetSecurityGroupsInput, ELBv2$20151201$SetSecurityGroupsOutput>;
+    setSubnets: $APIMethod<ELBv2$20151201$SetSubnetsInput, ELBv2$20151201$SetSubnetsOutput>;
+  }
+  declare class ELBv2 {
+    constructor(config: $ConfigOptions & {
+      apiVersion: '2015-12-01';
+    }): ELBv2$20151201;
+    constructor(): ELBv2$20151201;
+  }
   declare class EMR$20090331 {
     addInstanceGroups: $APIMethod<EMR$20090331$AddInstanceGroupsInput, EMR$20090331$AddInstanceGroupsOutput>;
     addJobFlowSteps: $APIMethod<EMR$20090331$AddJobFlowStepsInput, EMR$20090331$AddJobFlowStepsOutput>;
@@ -36913,6 +38012,27 @@ declare module 'aws-sdk' {
     }): Kinesis$20131202;
     constructor(): Kinesis$20131202;
   }
+  declare class KinesisAnalytics$20150814 {
+    addApplicationInput: $APIMethod<KinesisAnalytics$20150814$AddApplicationInputRequest, KinesisAnalytics$20150814$AddApplicationInputResponse>;
+    addApplicationOutput: $APIMethod<KinesisAnalytics$20150814$AddApplicationOutputRequest, KinesisAnalytics$20150814$AddApplicationOutputResponse>;
+    addApplicationReferenceDataSource: $APIMethod<KinesisAnalytics$20150814$AddApplicationReferenceDataSourceRequest, KinesisAnalytics$20150814$AddApplicationReferenceDataSourceResponse>;
+    createApplication: $APIMethod<KinesisAnalytics$20150814$CreateApplicationRequest, KinesisAnalytics$20150814$CreateApplicationResponse>;
+    deleteApplication: $APIMethod<KinesisAnalytics$20150814$DeleteApplicationRequest, KinesisAnalytics$20150814$DeleteApplicationResponse>;
+    deleteApplicationOutput: $APIMethod<KinesisAnalytics$20150814$DeleteApplicationOutputRequest, KinesisAnalytics$20150814$DeleteApplicationOutputResponse>;
+    deleteApplicationReferenceDataSource: $APIMethod<KinesisAnalytics$20150814$DeleteApplicationReferenceDataSourceRequest, KinesisAnalytics$20150814$DeleteApplicationReferenceDataSourceResponse>;
+    describeApplication: $APIMethod<KinesisAnalytics$20150814$DescribeApplicationRequest, KinesisAnalytics$20150814$DescribeApplicationResponse>;
+    discoverInputSchema: $APIMethod<KinesisAnalytics$20150814$DiscoverInputSchemaRequest, KinesisAnalytics$20150814$DiscoverInputSchemaResponse>;
+    listApplications: $APIMethod<KinesisAnalytics$20150814$ListApplicationsRequest, KinesisAnalytics$20150814$ListApplicationsResponse>;
+    startApplication: $APIMethod<KinesisAnalytics$20150814$StartApplicationRequest, KinesisAnalytics$20150814$StartApplicationResponse>;
+    stopApplication: $APIMethod<KinesisAnalytics$20150814$StopApplicationRequest, KinesisAnalytics$20150814$StopApplicationResponse>;
+    updateApplication: $APIMethod<KinesisAnalytics$20150814$UpdateApplicationRequest, KinesisAnalytics$20150814$UpdateApplicationResponse>;
+  }
+  declare class KinesisAnalytics {
+    constructor(config: $ConfigOptions & {
+      apiVersion: '2015-08-14';
+    }): KinesisAnalytics$20150814;
+    constructor(): KinesisAnalytics$20150814;
+  }
   declare class KMS$20141101 {
     cancelKeyDeletion: $APIMethod<KMS$20141101$CancelKeyDeletionRequest, KMS$20141101$CancelKeyDeletionResponse>;
     createAlias: $APIMethod<KMS$20141101$CreateAliasRequest, void>;
@@ -36920,6 +38040,7 @@ declare module 'aws-sdk' {
     createKey: $APIMethod<KMS$20141101$CreateKeyRequest, KMS$20141101$CreateKeyResponse>;
     decrypt: $APIMethod<KMS$20141101$DecryptRequest, KMS$20141101$DecryptResponse>;
     deleteAlias: $APIMethod<KMS$20141101$DeleteAliasRequest, void>;
+    deleteImportedKeyMaterial: $APIMethod<KMS$20141101$DeleteImportedKeyMaterialRequest, void>;
     describeKey: $APIMethod<KMS$20141101$DescribeKeyRequest, KMS$20141101$DescribeKeyResponse>;
     disableKey: $APIMethod<KMS$20141101$DisableKeyRequest, void>;
     disableKeyRotation: $APIMethod<KMS$20141101$DisableKeyRotationRequest, void>;
@@ -36931,6 +38052,8 @@ declare module 'aws-sdk' {
     generateRandom: $APIMethod<KMS$20141101$GenerateRandomRequest, KMS$20141101$GenerateRandomResponse>;
     getKeyPolicy: $APIMethod<KMS$20141101$GetKeyPolicyRequest, KMS$20141101$GetKeyPolicyResponse>;
     getKeyRotationStatus: $APIMethod<KMS$20141101$GetKeyRotationStatusRequest, KMS$20141101$GetKeyRotationStatusResponse>;
+    getParametersForImport: $APIMethod<KMS$20141101$GetParametersForImportRequest, KMS$20141101$GetParametersForImportResponse>;
+    importKeyMaterial: $APIMethod<KMS$20141101$ImportKeyMaterialRequest, KMS$20141101$ImportKeyMaterialResponse>;
     listAliases: $APIMethod<KMS$20141101$ListAliasesRequest, KMS$20141101$ListAliasesResponse>;
     listGrants: $APIMethod<KMS$20141101$ListGrantsRequest, KMS$20141101$ListGrantsResponse>;
     listKeyPolicies: $APIMethod<KMS$20141101$ListKeyPoliciesRequest, KMS$20141101$ListKeyPoliciesResponse>;
@@ -37036,6 +38159,7 @@ declare module 'aws-sdk' {
   }
   declare class MarketplaceCommerceAnalytics$20150701 {
     generateDataSet: $APIMethod<MarketplaceCommerceAnalytics$20150701$GenerateDataSetRequest, MarketplaceCommerceAnalytics$20150701$GenerateDataSetResult>;
+    startSupportDataExport: $APIMethod<MarketplaceCommerceAnalytics$20150701$StartSupportDataExportRequest, MarketplaceCommerceAnalytics$20150701$StartSupportDataExportResult>;
   }
   declare class MarketplaceCommerceAnalytics {
     constructor(config: $ConfigOptions & {
@@ -37709,6 +38833,25 @@ declare module 'aws-sdk' {
       apiVersion: '2009-04-15';
     }): SimpleDB$20090415;
     constructor(): SimpleDB$20090415;
+  }
+  declare class Snowball$20160630 {
+    cancelJob: $APIMethod<Snowball$20160630$CancelJobRequest, Snowball$20160630$CancelJobResult>;
+    createAddress: $APIMethod<Snowball$20160630$CreateAddressRequest, Snowball$20160630$CreateAddressResult>;
+    createJob: $APIMethod<Snowball$20160630$CreateJobRequest, Snowball$20160630$CreateJobResult>;
+    describeAddress: $APIMethod<Snowball$20160630$DescribeAddressRequest, Snowball$20160630$DescribeAddressResult>;
+    describeAddresses: $APIMethod<Snowball$20160630$DescribeAddressesRequest, Snowball$20160630$DescribeAddressesResult>;
+    describeJob: $APIMethod<Snowball$20160630$DescribeJobRequest, Snowball$20160630$DescribeJobResult>;
+    getJobManifest: $APIMethod<Snowball$20160630$GetJobManifestRequest, Snowball$20160630$GetJobManifestResult>;
+    getJobUnlockCode: $APIMethod<Snowball$20160630$GetJobUnlockCodeRequest, Snowball$20160630$GetJobUnlockCodeResult>;
+    getSnowballUsage: $APIMethod<Snowball$20160630$GetSnowballUsageRequest, Snowball$20160630$GetSnowballUsageResult>;
+    listJobs: $APIMethod<Snowball$20160630$ListJobsRequest, Snowball$20160630$ListJobsResult>;
+    updateJob: $APIMethod<Snowball$20160630$UpdateJobRequest, Snowball$20160630$UpdateJobResult>;
+  }
+  declare class Snowball {
+    constructor(config: $ConfigOptions & {
+      apiVersion: '2016-06-30';
+    }): Snowball$20160630;
+    constructor(): Snowball$20160630;
   }
   declare class SNS$20100331 {
     addPermission: $APIMethod<SNS$20100331$AddPermissionInput, void>;
