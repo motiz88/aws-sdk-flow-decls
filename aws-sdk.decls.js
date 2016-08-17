@@ -34771,22 +34771,46 @@ declare module 'aws-sdk' {
     domain: string;
     taskList: SWF$20120125$TaskList;
   };
-  declare type SWF$20120125$Decision = {
-    decisionType: 'ScheduleActivityTask' | 'RequestCancelActivityTask' | 'CompleteWorkflowExecution' | 'FailWorkflowExecution' | 'CancelWorkflowExecution' | 'ContinueAsNewWorkflowExecution' | 'RecordMarker' | 'StartTimer' | 'CancelTimer' | 'SignalExternalWorkflowExecution' | 'RequestCancelExternalWorkflowExecution' | 'StartChildWorkflowExecution' | 'ScheduleLambdaFunction';
-    scheduleActivityTaskDecisionAttributes?: SWF$20120125$ScheduleActivityTaskDecisionAttributes;
-    requestCancelActivityTaskDecisionAttributes?: SWF$20120125$RequestCancelActivityTaskDecisionAttributes;
-    completeWorkflowExecutionDecisionAttributes?: SWF$20120125$CompleteWorkflowExecutionDecisionAttributes;
-    failWorkflowExecutionDecisionAttributes?: SWF$20120125$FailWorkflowExecutionDecisionAttributes;
-    cancelWorkflowExecutionDecisionAttributes?: SWF$20120125$CancelWorkflowExecutionDecisionAttributes;
-    continueAsNewWorkflowExecutionDecisionAttributes?: SWF$20120125$ContinueAsNewWorkflowExecutionDecisionAttributes;
-    recordMarkerDecisionAttributes?: SWF$20120125$RecordMarkerDecisionAttributes;
-    startTimerDecisionAttributes?: SWF$20120125$StartTimerDecisionAttributes;
-    cancelTimerDecisionAttributes?: SWF$20120125$CancelTimerDecisionAttributes;
-    signalExternalWorkflowExecutionDecisionAttributes?: SWF$20120125$SignalExternalWorkflowExecutionDecisionAttributes;
-    requestCancelExternalWorkflowExecutionDecisionAttributes?: SWF$20120125$RequestCancelExternalWorkflowExecutionDecisionAttributes;
-    startChildWorkflowExecutionDecisionAttributes?: SWF$20120125$StartChildWorkflowExecutionDecisionAttributes;
-    scheduleLambdaFunctionDecisionAttributes?: SWF$20120125$ScheduleLambdaFunctionDecisionAttributes;
-  };
+  declare type SWF$20120125$Decision = {} & ({
+    decisionType: 'ScheduleActivityTask';
+    scheduleActivityTaskDecisionAttributes: SWF$20120125$ScheduleActivityTaskDecisionAttributes;
+  } | {
+    decisionType: 'RequestCancelActivityTask';
+    requestCancelActivityTaskDecisionAttributes: SWF$20120125$RequestCancelActivityTaskDecisionAttributes;
+  } | {
+    decisionType: 'CompleteWorkflowExecution';
+    completeWorkflowExecutionDecisionAttributes: SWF$20120125$CompleteWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'FailWorkflowExecution';
+    failWorkflowExecutionDecisionAttributes: SWF$20120125$FailWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'CancelWorkflowExecution';
+    cancelWorkflowExecutionDecisionAttributes: SWF$20120125$CancelWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'ContinueAsNewWorkflowExecution';
+    continueAsNewWorkflowExecutionDecisionAttributes: SWF$20120125$ContinueAsNewWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'RecordMarker';
+    recordMarkerDecisionAttributes: SWF$20120125$RecordMarkerDecisionAttributes;
+  } | {
+    decisionType: 'StartTimer';
+    startTimerDecisionAttributes: SWF$20120125$StartTimerDecisionAttributes;
+  } | {
+    decisionType: 'CancelTimer';
+    cancelTimerDecisionAttributes: SWF$20120125$CancelTimerDecisionAttributes;
+  } | {
+    decisionType: 'SignalExternalWorkflowExecution';
+    signalExternalWorkflowExecutionDecisionAttributes: SWF$20120125$SignalExternalWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'RequestCancelExternalWorkflowExecution';
+    requestCancelExternalWorkflowExecutionDecisionAttributes: SWF$20120125$RequestCancelExternalWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'StartChildWorkflowExecution';
+    startChildWorkflowExecutionDecisionAttributes: SWF$20120125$StartChildWorkflowExecutionDecisionAttributes;
+  } | {
+    decisionType: 'ScheduleLambdaFunction';
+    scheduleLambdaFunctionDecisionAttributes: SWF$20120125$ScheduleLambdaFunctionDecisionAttributes;
+  });
   declare type SWF$20120125$DecisionList = SWF$20120125$Decision[];
   declare type SWF$20120125$DecisionTask = {
     taskToken: string;
@@ -34906,63 +34930,170 @@ declare module 'aws-sdk' {
   };
   declare type SWF$20120125$HistoryEvent = {
     eventTimestamp: Date;
-    eventType: 'WorkflowExecutionStarted' | 'WorkflowExecutionCancelRequested' | 'WorkflowExecutionCompleted' | 'CompleteWorkflowExecutionFailed' | 'WorkflowExecutionFailed' | 'FailWorkflowExecutionFailed' | 'WorkflowExecutionTimedOut' | 'WorkflowExecutionCanceled' | 'CancelWorkflowExecutionFailed' | 'WorkflowExecutionContinuedAsNew' | 'ContinueAsNewWorkflowExecutionFailed' | 'WorkflowExecutionTerminated' | 'DecisionTaskScheduled' | 'DecisionTaskStarted' | 'DecisionTaskCompleted' | 'DecisionTaskTimedOut' | 'ActivityTaskScheduled' | 'ScheduleActivityTaskFailed' | 'ActivityTaskStarted' | 'ActivityTaskCompleted' | 'ActivityTaskFailed' | 'ActivityTaskTimedOut' | 'ActivityTaskCanceled' | 'ActivityTaskCancelRequested' | 'RequestCancelActivityTaskFailed' | 'WorkflowExecutionSignaled' | 'MarkerRecorded' | 'RecordMarkerFailed' | 'TimerStarted' | 'StartTimerFailed' | 'TimerFired' | 'TimerCanceled' | 'CancelTimerFailed' | 'StartChildWorkflowExecutionInitiated' | 'StartChildWorkflowExecutionFailed' | 'ChildWorkflowExecutionStarted' | 'ChildWorkflowExecutionCompleted' | 'ChildWorkflowExecutionFailed' | 'ChildWorkflowExecutionTimedOut' | 'ChildWorkflowExecutionCanceled' | 'ChildWorkflowExecutionTerminated' | 'SignalExternalWorkflowExecutionInitiated' | 'SignalExternalWorkflowExecutionFailed' | 'ExternalWorkflowExecutionSignaled' | 'RequestCancelExternalWorkflowExecutionInitiated' | 'RequestCancelExternalWorkflowExecutionFailed' | 'ExternalWorkflowExecutionCancelRequested' | 'LambdaFunctionScheduled' | 'LambdaFunctionStarted' | 'LambdaFunctionCompleted' | 'LambdaFunctionFailed' | 'LambdaFunctionTimedOut' | 'ScheduleLambdaFunctionFailed' | 'StartLambdaFunctionFailed';
     eventId: number;
-    workflowExecutionStartedEventAttributes?: SWF$20120125$WorkflowExecutionStartedEventAttributes;
-    workflowExecutionCompletedEventAttributes?: SWF$20120125$WorkflowExecutionCompletedEventAttributes;
-    completeWorkflowExecutionFailedEventAttributes?: SWF$20120125$CompleteWorkflowExecutionFailedEventAttributes;
-    workflowExecutionFailedEventAttributes?: SWF$20120125$WorkflowExecutionFailedEventAttributes;
-    failWorkflowExecutionFailedEventAttributes?: SWF$20120125$FailWorkflowExecutionFailedEventAttributes;
-    workflowExecutionTimedOutEventAttributes?: SWF$20120125$WorkflowExecutionTimedOutEventAttributes;
-    workflowExecutionCanceledEventAttributes?: SWF$20120125$WorkflowExecutionCanceledEventAttributes;
-    cancelWorkflowExecutionFailedEventAttributes?: SWF$20120125$CancelWorkflowExecutionFailedEventAttributes;
-    workflowExecutionContinuedAsNewEventAttributes?: SWF$20120125$WorkflowExecutionContinuedAsNewEventAttributes;
-    continueAsNewWorkflowExecutionFailedEventAttributes?: SWF$20120125$ContinueAsNewWorkflowExecutionFailedEventAttributes;
-    workflowExecutionTerminatedEventAttributes?: SWF$20120125$WorkflowExecutionTerminatedEventAttributes;
-    workflowExecutionCancelRequestedEventAttributes?: SWF$20120125$WorkflowExecutionCancelRequestedEventAttributes;
-    decisionTaskScheduledEventAttributes?: SWF$20120125$DecisionTaskScheduledEventAttributes;
-    decisionTaskStartedEventAttributes?: SWF$20120125$DecisionTaskStartedEventAttributes;
-    decisionTaskCompletedEventAttributes?: SWF$20120125$DecisionTaskCompletedEventAttributes;
-    decisionTaskTimedOutEventAttributes?: SWF$20120125$DecisionTaskTimedOutEventAttributes;
-    activityTaskScheduledEventAttributes?: SWF$20120125$ActivityTaskScheduledEventAttributes;
-    activityTaskStartedEventAttributes?: SWF$20120125$ActivityTaskStartedEventAttributes;
-    activityTaskCompletedEventAttributes?: SWF$20120125$ActivityTaskCompletedEventAttributes;
-    activityTaskFailedEventAttributes?: SWF$20120125$ActivityTaskFailedEventAttributes;
-    activityTaskTimedOutEventAttributes?: SWF$20120125$ActivityTaskTimedOutEventAttributes;
-    activityTaskCanceledEventAttributes?: SWF$20120125$ActivityTaskCanceledEventAttributes;
-    activityTaskCancelRequestedEventAttributes?: SWF$20120125$ActivityTaskCancelRequestedEventAttributes;
-    workflowExecutionSignaledEventAttributes?: SWF$20120125$WorkflowExecutionSignaledEventAttributes;
-    markerRecordedEventAttributes?: SWF$20120125$MarkerRecordedEventAttributes;
-    recordMarkerFailedEventAttributes?: SWF$20120125$RecordMarkerFailedEventAttributes;
-    timerStartedEventAttributes?: SWF$20120125$TimerStartedEventAttributes;
-    timerFiredEventAttributes?: SWF$20120125$TimerFiredEventAttributes;
-    timerCanceledEventAttributes?: SWF$20120125$TimerCanceledEventAttributes;
-    startChildWorkflowExecutionInitiatedEventAttributes?: SWF$20120125$StartChildWorkflowExecutionInitiatedEventAttributes;
-    childWorkflowExecutionStartedEventAttributes?: SWF$20120125$ChildWorkflowExecutionStartedEventAttributes;
-    childWorkflowExecutionCompletedEventAttributes?: SWF$20120125$ChildWorkflowExecutionCompletedEventAttributes;
-    childWorkflowExecutionFailedEventAttributes?: SWF$20120125$ChildWorkflowExecutionFailedEventAttributes;
-    childWorkflowExecutionTimedOutEventAttributes?: SWF$20120125$ChildWorkflowExecutionTimedOutEventAttributes;
-    childWorkflowExecutionCanceledEventAttributes?: SWF$20120125$ChildWorkflowExecutionCanceledEventAttributes;
-    childWorkflowExecutionTerminatedEventAttributes?: SWF$20120125$ChildWorkflowExecutionTerminatedEventAttributes;
-    signalExternalWorkflowExecutionInitiatedEventAttributes?: SWF$20120125$SignalExternalWorkflowExecutionInitiatedEventAttributes;
-    externalWorkflowExecutionSignaledEventAttributes?: SWF$20120125$ExternalWorkflowExecutionSignaledEventAttributes;
-    signalExternalWorkflowExecutionFailedEventAttributes?: SWF$20120125$SignalExternalWorkflowExecutionFailedEventAttributes;
-    externalWorkflowExecutionCancelRequestedEventAttributes?: SWF$20120125$ExternalWorkflowExecutionCancelRequestedEventAttributes;
-    requestCancelExternalWorkflowExecutionInitiatedEventAttributes?: SWF$20120125$RequestCancelExternalWorkflowExecutionInitiatedEventAttributes;
-    requestCancelExternalWorkflowExecutionFailedEventAttributes?: SWF$20120125$RequestCancelExternalWorkflowExecutionFailedEventAttributes;
-    scheduleActivityTaskFailedEventAttributes?: SWF$20120125$ScheduleActivityTaskFailedEventAttributes;
-    requestCancelActivityTaskFailedEventAttributes?: SWF$20120125$RequestCancelActivityTaskFailedEventAttributes;
-    startTimerFailedEventAttributes?: SWF$20120125$StartTimerFailedEventAttributes;
-    cancelTimerFailedEventAttributes?: SWF$20120125$CancelTimerFailedEventAttributes;
-    startChildWorkflowExecutionFailedEventAttributes?: SWF$20120125$StartChildWorkflowExecutionFailedEventAttributes;
-    lambdaFunctionScheduledEventAttributes?: SWF$20120125$LambdaFunctionScheduledEventAttributes;
-    lambdaFunctionStartedEventAttributes?: SWF$20120125$LambdaFunctionStartedEventAttributes;
-    lambdaFunctionCompletedEventAttributes?: SWF$20120125$LambdaFunctionCompletedEventAttributes;
-    lambdaFunctionFailedEventAttributes?: SWF$20120125$LambdaFunctionFailedEventAttributes;
-    lambdaFunctionTimedOutEventAttributes?: SWF$20120125$LambdaFunctionTimedOutEventAttributes;
-    scheduleLambdaFunctionFailedEventAttributes?: SWF$20120125$ScheduleLambdaFunctionFailedEventAttributes;
-    startLambdaFunctionFailedEventAttributes?: SWF$20120125$StartLambdaFunctionFailedEventAttributes;
-  };
+  } & ({
+    eventType: 'WorkflowExecutionStarted';
+    workflowExecutionStartedEventAttributes: SWF$20120125$WorkflowExecutionStartedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionCancelRequested';
+    workflowExecutionCancelRequestedEventAttributes: SWF$20120125$WorkflowExecutionCancelRequestedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionCompleted';
+    workflowExecutionCompletedEventAttributes: SWF$20120125$WorkflowExecutionCompletedEventAttributes;
+  } | {
+    eventType: 'CompleteWorkflowExecutionFailed';
+    completeWorkflowExecutionFailedEventAttributes: SWF$20120125$CompleteWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionFailed';
+    workflowExecutionFailedEventAttributes: SWF$20120125$WorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'FailWorkflowExecutionFailed';
+    failWorkflowExecutionFailedEventAttributes: SWF$20120125$FailWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionTimedOut';
+    workflowExecutionTimedOutEventAttributes: SWF$20120125$WorkflowExecutionTimedOutEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionCanceled';
+    workflowExecutionCanceledEventAttributes: SWF$20120125$WorkflowExecutionCanceledEventAttributes;
+  } | {
+    eventType: 'CancelWorkflowExecutionFailed';
+    cancelWorkflowExecutionFailedEventAttributes: SWF$20120125$CancelWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionContinuedAsNew';
+    workflowExecutionContinuedAsNewEventAttributes: SWF$20120125$WorkflowExecutionContinuedAsNewEventAttributes;
+  } | {
+    eventType: 'ContinueAsNewWorkflowExecutionFailed';
+    continueAsNewWorkflowExecutionFailedEventAttributes: SWF$20120125$ContinueAsNewWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionTerminated';
+    workflowExecutionTerminatedEventAttributes: SWF$20120125$WorkflowExecutionTerminatedEventAttributes;
+  } | {
+    eventType: 'DecisionTaskScheduled';
+    decisionTaskScheduledEventAttributes: SWF$20120125$DecisionTaskScheduledEventAttributes;
+  } | {
+    eventType: 'DecisionTaskStarted';
+    decisionTaskStartedEventAttributes: SWF$20120125$DecisionTaskStartedEventAttributes;
+  } | {
+    eventType: 'DecisionTaskCompleted';
+    decisionTaskCompletedEventAttributes: SWF$20120125$DecisionTaskCompletedEventAttributes;
+  } | {
+    eventType: 'DecisionTaskTimedOut';
+    decisionTaskTimedOutEventAttributes: SWF$20120125$DecisionTaskTimedOutEventAttributes;
+  } | {
+    eventType: 'ActivityTaskScheduled';
+    activityTaskScheduledEventAttributes: SWF$20120125$ActivityTaskScheduledEventAttributes;
+  } | {
+    eventType: 'ScheduleActivityTaskFailed';
+    scheduleActivityTaskFailedEventAttributes: SWF$20120125$ScheduleActivityTaskFailedEventAttributes;
+  } | {
+    eventType: 'ActivityTaskStarted';
+    activityTaskStartedEventAttributes: SWF$20120125$ActivityTaskStartedEventAttributes;
+  } | {
+    eventType: 'ActivityTaskCompleted';
+    activityTaskCompletedEventAttributes: SWF$20120125$ActivityTaskCompletedEventAttributes;
+  } | {
+    eventType: 'ActivityTaskFailed';
+    activityTaskFailedEventAttributes: SWF$20120125$ActivityTaskFailedEventAttributes;
+  } | {
+    eventType: 'ActivityTaskTimedOut';
+    activityTaskTimedOutEventAttributes: SWF$20120125$ActivityTaskTimedOutEventAttributes;
+  } | {
+    eventType: 'ActivityTaskCanceled';
+    activityTaskCanceledEventAttributes: SWF$20120125$ActivityTaskCanceledEventAttributes;
+  } | {
+    eventType: 'ActivityTaskCancelRequested';
+    activityTaskCancelRequestedEventAttributes: SWF$20120125$ActivityTaskCancelRequestedEventAttributes;
+  } | {
+    eventType: 'RequestCancelActivityTaskFailed';
+    requestCancelActivityTaskFailedEventAttributes: SWF$20120125$RequestCancelActivityTaskFailedEventAttributes;
+  } | {
+    eventType: 'WorkflowExecutionSignaled';
+    workflowExecutionSignaledEventAttributes: SWF$20120125$WorkflowExecutionSignaledEventAttributes;
+  } | {
+    eventType: 'MarkerRecorded';
+    markerRecordedEventAttributes: SWF$20120125$MarkerRecordedEventAttributes;
+  } | {
+    eventType: 'RecordMarkerFailed';
+    recordMarkerFailedEventAttributes: SWF$20120125$RecordMarkerFailedEventAttributes;
+  } | {
+    eventType: 'TimerStarted';
+    timerStartedEventAttributes: SWF$20120125$TimerStartedEventAttributes;
+  } | {
+    eventType: 'StartTimerFailed';
+    startTimerFailedEventAttributes: SWF$20120125$StartTimerFailedEventAttributes;
+  } | {
+    eventType: 'TimerFired';
+    timerFiredEventAttributes: SWF$20120125$TimerFiredEventAttributes;
+  } | {
+    eventType: 'TimerCanceled';
+    timerCanceledEventAttributes: SWF$20120125$TimerCanceledEventAttributes;
+  } | {
+    eventType: 'CancelTimerFailed';
+    cancelTimerFailedEventAttributes: SWF$20120125$CancelTimerFailedEventAttributes;
+  } | {
+    eventType: 'StartChildWorkflowExecutionInitiated';
+    startChildWorkflowExecutionInitiatedEventAttributes: SWF$20120125$StartChildWorkflowExecutionInitiatedEventAttributes;
+  } | {
+    eventType: 'StartChildWorkflowExecutionFailed';
+    startChildWorkflowExecutionFailedEventAttributes: SWF$20120125$StartChildWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionStarted';
+    childWorkflowExecutionStartedEventAttributes: SWF$20120125$ChildWorkflowExecutionStartedEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionCompleted';
+    childWorkflowExecutionCompletedEventAttributes: SWF$20120125$ChildWorkflowExecutionCompletedEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionFailed';
+    childWorkflowExecutionFailedEventAttributes: SWF$20120125$ChildWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionTimedOut';
+    childWorkflowExecutionTimedOutEventAttributes: SWF$20120125$ChildWorkflowExecutionTimedOutEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionCanceled';
+    childWorkflowExecutionCanceledEventAttributes: SWF$20120125$ChildWorkflowExecutionCanceledEventAttributes;
+  } | {
+    eventType: 'ChildWorkflowExecutionTerminated';
+    childWorkflowExecutionTerminatedEventAttributes: SWF$20120125$ChildWorkflowExecutionTerminatedEventAttributes;
+  } | {
+    eventType: 'SignalExternalWorkflowExecutionInitiated';
+    signalExternalWorkflowExecutionInitiatedEventAttributes: SWF$20120125$SignalExternalWorkflowExecutionInitiatedEventAttributes;
+  } | {
+    eventType: 'SignalExternalWorkflowExecutionFailed';
+    signalExternalWorkflowExecutionFailedEventAttributes: SWF$20120125$SignalExternalWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'ExternalWorkflowExecutionSignaled';
+    externalWorkflowExecutionSignaledEventAttributes: SWF$20120125$ExternalWorkflowExecutionSignaledEventAttributes;
+  } | {
+    eventType: 'RequestCancelExternalWorkflowExecutionInitiated';
+    requestCancelExternalWorkflowExecutionInitiatedEventAttributes: SWF$20120125$RequestCancelExternalWorkflowExecutionInitiatedEventAttributes;
+  } | {
+    eventType: 'RequestCancelExternalWorkflowExecutionFailed';
+    requestCancelExternalWorkflowExecutionFailedEventAttributes: SWF$20120125$RequestCancelExternalWorkflowExecutionFailedEventAttributes;
+  } | {
+    eventType: 'ExternalWorkflowExecutionCancelRequested';
+    externalWorkflowExecutionCancelRequestedEventAttributes: SWF$20120125$ExternalWorkflowExecutionCancelRequestedEventAttributes;
+  } | {
+    eventType: 'LambdaFunctionScheduled';
+    lambdaFunctionScheduledEventAttributes: SWF$20120125$LambdaFunctionScheduledEventAttributes;
+  } | {
+    eventType: 'LambdaFunctionStarted';
+    lambdaFunctionStartedEventAttributes: SWF$20120125$LambdaFunctionStartedEventAttributes;
+  } | {
+    eventType: 'LambdaFunctionCompleted';
+    lambdaFunctionCompletedEventAttributes: SWF$20120125$LambdaFunctionCompletedEventAttributes;
+  } | {
+    eventType: 'LambdaFunctionFailed';
+    lambdaFunctionFailedEventAttributes: SWF$20120125$LambdaFunctionFailedEventAttributes;
+  } | {
+    eventType: 'LambdaFunctionTimedOut';
+    lambdaFunctionTimedOutEventAttributes: SWF$20120125$LambdaFunctionTimedOutEventAttributes;
+  } | {
+    eventType: 'ScheduleLambdaFunctionFailed';
+    scheduleLambdaFunctionFailedEventAttributes: SWF$20120125$ScheduleLambdaFunctionFailedEventAttributes;
+  } | {
+    eventType: 'StartLambdaFunctionFailed';
+    startLambdaFunctionFailedEventAttributes: SWF$20120125$StartLambdaFunctionFailedEventAttributes;
+  });
   declare type SWF$20120125$HistoryEventList = SWF$20120125$HistoryEvent[];
   declare type SWF$20120125$LambdaFunctionCompletedEventAttributes = {
     scheduledEventId: number;
