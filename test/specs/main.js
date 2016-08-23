@@ -37,8 +37,8 @@ describe('AWS SDK type declarations', function () {
         flowStderr = stderr.toString();
       } catch (e) {
         const {stdout, stderr} = e;
-        flowStdout = stdout.toString();
-        flowStderr = stderr.toString();
+        flowStdout = stdout ? stdout.toString() : '';
+        flowStderr = stderr ? stderr.toString() : '';
         if (!flowStderr && !flowStdout) throw e;
       }
       const stdoutFile = path.resolve(artifactsDir, 'flow-stdout.txt');
