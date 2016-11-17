@@ -65,7 +65,7 @@
     "mocha": "^3.0.2",
     "mz": "^2.4.0",
     "npm-run-all": "^3.0.0",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.2",
     "tmp-promise": "^1.0.2"
   },
   "release": {
