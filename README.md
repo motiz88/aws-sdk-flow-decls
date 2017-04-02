@@ -1,4 +1,6 @@
 # aws-sdk-flow-decls
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/motiz88/aws-sdk-flow-decls.svg)](https://greenkeeper.io/)
 [![circle][circle-image]][circle-url]
 [![npm][npm-image]][npm-url]
 
